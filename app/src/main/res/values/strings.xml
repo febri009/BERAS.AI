@@ -10,5 +10,6 @@
     <string name="logout">Log Out</string>
     <string name="about">Tentang Aplikasi</string>
     <string name="setting">Tentang Aplikasi</string>
+    <string name="Halo">Halo, User!</string>
 
 </resources>
