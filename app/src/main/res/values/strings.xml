@@ -5,5 +5,10 @@
     <string name="title_scan">Deteksi</string>
     <string name="title_price">Harga</string>
     <string name="title_profile">Profile</string>
+    <string name="user_image">User Image</string>
+    <string name="bantuan">Bantuan</string>
+    <string name="logout">Log Out</string>
+    <string name="about">Tentang Aplikasi</string>
+    <string name="setting">Tentang Aplikasi</string>
 
 </resources>
