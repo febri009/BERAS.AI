@@ -34,6 +34,7 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
 
+        // Mengatur event click pada card "About"
         binding.buttonAbout.setOnClickListener {
             val intent = Intent(requireContext(), AboutActivity::class.java)
             startActivity(intent)

@@ -1,23 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/deskripsi_fragment"
+    android:background="@android:color/white"
     tools:context=".ui.deskripsi.DeskripsiFragment">
 
-    <TextView
-        android:id="@+id/text_dashboard"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="250dp">
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@color/green1"
+            android:alpha="0.5"
+            android:scaleType="fitXY"/>
+    </FrameLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="20dp"
+            android:textAppearance="@style/CustomtextStyle3"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Panduan buat kamu yang bingung dengan jenis-jenis kualitas beras"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_below="@id/title"
+            android:textAppearance="@style/CustomtextStyle1"
+            android:gravity="center"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp"
+        android:layout_below="@id/title"
+        android:background="@drawable/bg_rounded_rect"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="35dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvPremium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kualitas Premium"
+                android:textAppearance="@style/CustomtextStyle3"/>
+
+
+            <TextView
+                android:id="@+id/tvDeskripsiPremium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Butir-butirnya besar, seragam, dan memiliki warna putih bersih yang mengkilap."
+                android:textAppearance="@style/CustomtextStyle1"
+                android:justificationMode="inter_word"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/premium" />
+
+            <TextView
+                android:id="@+id/tvMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Kualitas Medium"
+                android:textAppearance="@style/CustomtextStyle3"/>
+
+
+            <TextView
+                android:id="@+id/tvDeskripsiMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Warna butirnya mungkin sedikit kurang putih bersih dibandingkan dengan beras premium, tetapi tetap memiliki penampilan yang baik."
+                android:textAppearance="@style/CustomtextStyle1"
+                android:justificationMode="inter_word"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/medium" />
+
+            <TextView
+                android:id="@+id/tvBad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Kualitas Tidak Layak"
+                android:textAppearance="@style/CustomtextStyle3"/>
+
+
+            <TextView
+                android:id="@+id/tvDeskripsiBad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Butir-butir yang pecah atau hancur, warna yang kusam atau tidak seragam, dan adanya kotoran atau benda asing lainnya di dalamnya."
+                android:textAppearance="@style/CustomtextStyle1"
+                android:justificationMode="inter_word"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:src="@drawable/bad" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

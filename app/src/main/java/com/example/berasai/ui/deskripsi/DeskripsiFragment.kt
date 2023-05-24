@@ -28,10 +28,6 @@ class DeskripsiFragment : Fragment() {
         _binding = FragmentDeskripsiBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        deskripsiViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 
