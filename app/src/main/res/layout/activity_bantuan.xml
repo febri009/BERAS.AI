@@ -24,8 +24,8 @@
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:layout_marginStart="120dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/illustration"
+            android:layout_marginTop="65dp"
+            android:background="@drawable/bantuan"
             android:gravity="bottom"
             android:orientation="horizontal" />
 
