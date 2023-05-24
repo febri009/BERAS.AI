@@ -11,5 +11,17 @@
     <string name="about">Tentang Aplikasi</string>
     <string name="setting">Tentang Aplikasi</string>
     <string name="Halo">Halo, User!</string>
+    <string name="title_activity_bantuan">BantuanActivity</string>
+    <string name="content_work">Aplikasi ini bekerja dengan cara mengambil citra/gambar obyek dari beras menggunakan kamera <i>smartphone</i>. Setelah itu diekstrak fitur dari piksel obyek tersebut dan diubah ke dalam bentuk <i>array</i> dengan ukuran piksel 224 x 224 dengan format gambar berwarna (RGB). Kemudian dilatih dan diproses menggunakan model yang sudah dilatih sebelumnya sehingga dapat diprediksi hasil keluaran dari kuslitas beras yang dideteksi.</string>
+    <string name="content_step">1. Buka Aplikasi Klasifikasi Kualitas Beras kemudian pilih menu "PENDETEKSI KUALITAS BERAS"\n\n2. Setelah terbuka menu tersebut arahkan kamera ke obyek beras yang ingin dideteksi (jarak kamera dengan obyek sekitar 10 cm), kemudian klik/tap tombol "Deteksi"\n\n3. Hasil prediksi akan muncul beberapa saat setelah menekan tombol "Deteksi" di bagian bawah layar dalam persentase (% diurutkan dari yang tertinggi). Persentase tertinggi merupakan hasil prediksi yang paling mendekati/mirip\n\n4. Buka menu "DETEKSI BERAS DARI GALERI" jika ingin mengklasifikasi secara manual dengan mengimpor gambar yang sudah tersimpan di galeri foto\n\n5. Klik tombol "PILIH GAMBAR" dan cari gambar obyek beras yang ingin dideteksi\n\n6. Selanjutnya tekan tombol DETEKSI dan hasil prediksinya akan muncul beberapa saat setelah menekannya di bagian bawah layar\n\n7. Jika Anda ingin mengetahui penjelasan singkat tiap kualitas beras pilih menu "DESKRIPSI KUALITAS BERAS, Menu "BANTUAN" untuk mengetahui cara penggunaan aplikasi ini, dan Menu "TENTANG APLIKASI" sebagai informasi pembuatan aplikasi ini.
+    </string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 </resources>

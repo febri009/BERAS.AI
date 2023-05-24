@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".BantuanActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@color/green1"
+            android:alpha="0.5"
+            android:scaleType="fitXY"/>
+
+        <LinearLayout
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/illustration"
+            android:gravity="bottom"
+            android:orientation="horizontal" />
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:navigationIcon="@drawable/ic_arrow_back"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/bg_rounded_rect"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tvCaraKerja"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cara Kerja Aplikasi"
+                android:textAppearance="@style/CustomtextStyle3"/>
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="365dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_below="@+id/tvCaraKerja"
+                android:background="@color/yellow2"/>
+
+            <TextView
+                android:id="@+id/tvDeskripsiCaraKerja"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/content_work"
+                android:textAppearance="@style/CustomtextStyle1"
+                android:justificationMode="inter_word"/>
+
+            <TextView
+                android:id="@+id/tvCaraMenggunakan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cara Menggunakan"
+                android:textAppearance="@style/CustomtextStyle3"/>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="365dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_below="@+id/tvDeskripsiCaraKerja"
+                android:background="@color/yellow2"/>
+
+            <TextView
+                android:id="@+id/tvDeskripsiCaraMenggunakan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/content_step"
+                android:textAppearance="@style/CustomtextStyle1"
+                android:justificationMode="inter_word"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
