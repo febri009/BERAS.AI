@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import com.example.berasai.AboutActivity
 import com.example.berasai.BantuanActivity
 import com.example.berasai.databinding.FragmentProfileBinding
 
@@ -30,6 +31,11 @@ class ProfileFragment : Fragment() {
         // Mengatur event click pada card "Bantuan"
         binding.buttonBantuan.setOnClickListener {
             val intent = Intent(requireContext(), BantuanActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.buttonAbout.setOnClickListener {
+            val intent = Intent(requireContext(), AboutActivity::class.java)
             startActivity(intent)
         }
 
