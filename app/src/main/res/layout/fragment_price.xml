@@ -1,24 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/price_fragment"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.price.PriceFragment">
+    android:id="@+id/deskripsi_fragment"
+    android:background="@android:color/white"
+    tools:context=".ui.deskripsi.DeskripsiFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@color/green1"
+            android:alpha="0.5"
+            android:scaleType="fitXY"/>
+    </FrameLayout>
 
     <TextView
-        android:id="@+id/text_price"
-        android:layout_width="match_parent"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Daftar Harga Beras"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="20dp"
+        android:textAppearance="@style/CustomtextStyle3"
+        android:gravity="center" />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Harga beras di setiap provinsi Indonesia"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="50dp"
+        android:layout_below="@id/title"
+        android:textAppearance="@style/CustomtextStyle1"
+        android:gravity="center"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp"
+        android:layout_below="@id/title"
+        android:background="@drawable/bg_rounded_rect"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="35dp"
+            android:orientation="vertical">
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>
