@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvListMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|start"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="10dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp">
+
+        <ImageView
+            android:id="@+id/ivGambarKonten"
+            android:layout_width="80dp"
+            android:layout_height="84dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:adjustViewBounds="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toEndOf="@id/ivGambarKonten"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvJudulKonten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Menjelajahi dimensi unik beras"
+                android:textAppearance="@style/CustomtextStyle3" />
+
+            <TextView
+                android:id="@+id/tvIsiKonten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:maxLines="3"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel fringilla libero. Curabitur posuere lectus vitae lectus auctor, in auctor ante congue."
+                android:textAppearance="@style/CustomtextStyle1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvNamaPenulis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:maxLines="1"
+                    android:text="Dian Rizqi Saputra"
+                    android:textAppearance="@style/CustomtextStyle1"
+                    android:textSize="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvTanggal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="130dp"
+                    android:maxLines="1"
+                    android:text="20 Mei 2023"
+                    android:textAppearance="@style/CustomtextStyle1"
+                    android:textSize="10dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

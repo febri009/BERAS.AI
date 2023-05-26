@@ -79,6 +79,10 @@
                 android:text="Konten informatif seputar beras"
                 android:textAppearance="@style/CustomtextStyle1" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvListKonten"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
