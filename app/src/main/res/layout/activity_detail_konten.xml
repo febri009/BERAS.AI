@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".DetailKontenActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <ImageView
+            android:id="@+id/ivThumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@color/colorAccent"
+            android:scaleType="fitXY"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginStart="-50dp"
+            android:layout_margiEnd="-50dp"
+            android:background="@drawable/bg_overlay"
+            android:gravity="bottom"
+            android:orientation="horizontal" />
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:navigationIcon="@drawable/ic_arrow_back"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/bg_rounded_rect"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tvJudul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Menjelajahi dimensi unik beras"
+                android:textAppearance="@style/CustomtextStyle3"/>
+
+            <TextView
+                android:id="@+id/tvPenulis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dian Rizqi Saputra"
+                android:textAppearance="@style/CustomtextStyle1"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tvTanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="26 Mei 2023"
+                android:textAppearance="@style/CustomtextStyle1"
+                android:textSize="10sp"/>
+
+            <TextView
+                android:id="@+id/tvIsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit venenatis eros ut feugiat. Quisque sagittis consectetur nunc, nec pellentesque lorem rutrum sodales. Mauris posuere dictum maximus. Nunc sed tincidunt enim. Morbi sagittis orci nunc, et egestas nulla facilisis quis. Morbi et felis consequat, laoreet leo quis, malesuada enim. Pellentesque laoreet tincidunt est, sit amet imperdiet sem fermentum vel. Sed nec elementum urna, et gravida tellus. Nunc ante lorem, rutrum eu massa eu, tincidunt ultricies ipsum. Curabitur at blandit nibh. Ut viverra arcu congue sem tristique ullamcorper. Nulla venenatis ornare nisl. Sed pretium dolor quis ligula venenatis bibendum. Phasellus porttitor ornare dolor, a maximus enim aliquam sed. Morbi laoreet iaculis mi sed aliquam. Nullam vestibulum imperdiet libero, id pulvinar dolor ultricies sit amet."
+                android:textAppearance="@style/CustomtextStyle1"
+                android:justificationMode="inter_word"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

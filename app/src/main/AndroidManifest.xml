@@ -12,6 +12,9 @@
         android:theme="@style/Theme.BERASAI"
         tools:targetApi="31">
         <activity
+            android:name=".DetailKontenActivity"
+            android:exported="false" />
+        <activity
             android:name=".AboutActivity"
             android:exported="false" />
         <activity
