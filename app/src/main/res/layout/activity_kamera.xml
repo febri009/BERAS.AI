@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    tools:context=".KameraActivity">
+
+
+    <com.priyankvasa.android.cameraviewex.CameraView
+        android:id="@+id/camera"
+        android:layout_width="480dp"
+        android:layout_height="640dp"
+        android:adjustViewBounds="true"
+        android:keepScreenOn="true"
+        app:aspectRatio="4:3"
+        app:autoFocus="continuous_picture"
+        app:awb="auto"
+        app:cameraMode="single_capture"
+        app:facing="back"
+        app:flash="auto"
+        app:outputFormat="jpeg"
+        app:pinchToZoom="true"
+        app:shutter="short_time"
+        app:touchToFocus="true"
+        app:zsl="true" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/capture_photo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="start|center"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="360dp"
+        android:clickable="true"
+        app:cardBackgroundColor="@color/green2"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_search"
+            app:tint="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deteksi"
+            android:layout_marginBottom="5dp"
+            android:textAppearance="@style/CustomtextStyle1"
+            android:textColor="@color/white"
+            android:layout_gravity="center|bottom"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/bg_rounded_rect"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/yellow3"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="true">
+
+                <TextView
+                    android:id="@+id/tvHasilPrediksi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:padding="8dp"
+                    android:text="Hasil Prediksi"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/CustomtextStyle1"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/green3"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="true">
+
+                <TextView
+                    android:id="@+id/tvHasil1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:padding="8dp"
+                    android:text="Hasil 1"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/CustomtextStyle1"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/green3"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="true">
+
+                <TextView
+                    android:id="@+id/tvHasil2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:padding="8dp"
+                    android:text="Hasil 2"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/CustomtextStyle1"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/green3"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="true">
+
+                <TextView
+                    android:id="@+id/tvHasil3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:padding="8dp"
+                    android:text="Hasil 3"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/CustomtextStyle1"/>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

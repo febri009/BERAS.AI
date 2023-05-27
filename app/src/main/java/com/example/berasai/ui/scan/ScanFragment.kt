@@ -1,5 +1,6 @@
 package com.example.berasai.ui.scan
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.berasai.BantuanActivity
+import com.example.berasai.KameraActivity
 import com.example.berasai.databinding.FragmentScanBinding
 
 class ScanFragment : Fragment() {
@@ -28,10 +31,12 @@ class ScanFragment : Fragment() {
         _binding = FragmentScanBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textScan
-        scanViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        // Mengatur event click pada card "Bantuan"
+        binding.buttonCamera.setOnClickListener {
+            val intent = Intent(requireContext(), KameraActivity::class.java)
+            startActivity(intent)
         }
+
         return root
     }
 
