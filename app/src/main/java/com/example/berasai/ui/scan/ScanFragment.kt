@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.berasai.BantuanActivity
+import com.example.berasai.GaleriActivity
 import com.example.berasai.KameraActivity
 import com.example.berasai.databinding.FragmentScanBinding
 
@@ -31,9 +32,15 @@ class ScanFragment : Fragment() {
         _binding = FragmentScanBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Mengatur event click pada card "Bantuan"
+        // Mengatur event click pada button "Camera"
         binding.buttonCamera.setOnClickListener {
             val intent = Intent(requireContext(), KameraActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Mengatur event click pada button "Gallery"
+        binding.buttonGallery.setOnClickListener {
+            val intent = Intent(requireContext(), GaleriActivity::class.java)
             startActivity(intent)
         }
 

@@ -6,33 +6,21 @@ import android.content.pm.PackageManager
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.SystemClock
-import android.view.View
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.view.PreviewView
-import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import com.priyankvasa.android.cameraviewex.CameraView
-import com.priyankvasa.android.cameraviewex.Modes
+import com.example.berasai.databinding.ActivityKameraBinding
 
 class KameraActivity : AppCompatActivity() {
 
 
-    private lateinit var cameraView: CameraView
-    private lateinit var capturePhoto: CardView
-
+    private lateinit var binding: ActivityKameraBinding
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_kamera)
-
-        cameraView = findViewById(R.id.camera)
-        capturePhoto = findViewById(R.id.capture_photo)
-
+        binding = ActivityKameraBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (!canUseCamera()) {
             requestCameraPermissions()
@@ -51,7 +39,7 @@ class KameraActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission", "SetTextI18n")
     private fun setupCamera() {
-        cameraView.addPictureTakenListener {
+        binding.camera.addPictureTakenListener {
             AsyncTask.execute {
                 val startTime = SystemClock.uptimeMillis()//menghitung waktu awal
                 runOnUiThread {
@@ -60,8 +48,8 @@ class KameraActivity : AppCompatActivity() {
             }
         }
 
-        capturePhoto.setOnClickListener {
-            cameraView.capture()
+        binding.capturePhoto.setOnClickListener {
+            binding.camera.capture()
         }
 
     }
@@ -87,20 +75,20 @@ class KameraActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         if (canUseCamera()) {
-            cameraView.start()
+            binding.camera.start()
         }
     }
 
     override fun onPause() {
         if (canUseCamera()) {
-            cameraView.stop()
+            binding.camera.stop()
         }
         super.onPause()
     }
 
     override fun onDestroy() {
         if (canUseCamera()) {
-            cameraView.destroy()
+            binding.camera.destroy()
         }
         super.onDestroy()
     }
