@@ -2,22 +2,27 @@ package com.example.berasai
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.*
 import androidx.core.app.ActivityCompat
 import com.example.berasai.databinding.ActivityKameraBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.priyankvasa.android.cameraviewex.CameraView
+import kotlinx.coroutines.*
+import java.util.*
+
+
 
 class KameraActivity : AppCompatActivity() {
 
     private lateinit var classifier: Klasifikasi
     private lateinit var resultbar: TextView
+    private lateinit var camera: CameraView
     private lateinit var binding: ActivityKameraBinding
 
     @SuppressLint("MissingPermission")
@@ -26,8 +31,9 @@ class KameraActivity : AppCompatActivity() {
         binding = ActivityKameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        resultbar = findViewById(R.id.tvHasil1)
+        resultbar = binding.tvHasil1
         classifier = Klasifikasi(assets)
+        camera = binding.camera
 
         if (!canUseCamera()) {
             requestCameraPermissions()
@@ -44,9 +50,10 @@ class KameraActivity : AppCompatActivity() {
         )
     }
 
+
     @SuppressLint("MissingPermission", "SetTextI18n")
     private fun setupCamera() {
-        binding.camera.addPictureTakenListener{image ->
+        binding.camera.addPictureTakenListener { image ->
             try {
                 GlobalScope.launch(Dispatchers.IO) {
                     val recognitions = classifier.recognize(image.data)
@@ -55,14 +62,19 @@ class KameraActivity : AppCompatActivity() {
                         resultbar.text = txt
                     }
                 }
-            } catch (e: Exception){
-                Toast.makeText(this, "ERROR", Toast.LENGTH_LONG).show()
+            } catch (e: Exception) {
+                Toast.makeText(this, "ERROR: ${e.message}", Toast.LENGTH_LONG).show()
+                Log.e("CameraError", "Error capturing image", e)
             }
-
         }
 
         binding.capturePhoto.setOnClickListener {
-            binding.camera.capture()
+            try {
+                binding.camera.capture()
+            } catch (e: Exception) {
+                Toast.makeText(this, "ERROR: ${e.message}", Toast.LENGTH_LONG).show()
+                Log.e("CameraError", "Error capturing photo", e)
+            }
         }
 
     }
@@ -88,20 +100,20 @@ class KameraActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         if (canUseCamera()) {
-            binding.camera.start()
+            camera.start()
         }
     }
 
     override fun onPause() {
         if (canUseCamera()) {
-            binding.camera.stop()
+            camera.stop()
         }
         super.onPause()
     }
 
     override fun onDestroy() {
         if (canUseCamera()) {
-            binding.camera.destroy()
+            camera.destroy()
         }
         super.onDestroy()
     }
@@ -116,3 +128,7 @@ class KameraActivity : AppCompatActivity() {
         private const val REQUEST_CAMERA_CODE = 1
     }
 }
+
+
+
+

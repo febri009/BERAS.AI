@@ -3,6 +3,7 @@ package com.example.berasai
 import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.util.Log
+import kotlin.collections.ArrayList
 import org.tensorflow.lite.Interpreter
 import java.io.FileInputStream
 import java.nio.ByteBuffer
@@ -11,7 +12,6 @@ import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
 import java.util.*
 import kotlin.Comparator
-import kotlin.collections.ArrayList
 
 class DeteksiDariGaleri(assetManager: AssetManager, modelPath: String, labelPath: String, inputSize: Int) {
     private var interpreter: Interpreter

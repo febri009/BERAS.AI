@@ -24,7 +24,7 @@ class Klasifikasi(private val assetManager: AssetManager) {
     }
 
 
-    fun recognize(data: ByteArray): List<Deteksi> {
+    fun recognize(data : ByteArray): List<Deteksi> {
         val result = Array(1) { FloatArray(labels.size) }
 
         val unscaledBitmap = BitmapFactory.decodeByteArray(data, 0, data.size)

@@ -38,10 +38,10 @@ class GaleriActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_galeri)
 
-         val mPhotoImageView = findViewById<ImageView>(R.id.mPhotoImageView)
-         val mGalleryButton = findViewById<Button>(R.id.mGalleryButton)
-         val mDetectButton = findViewById<CardView>(R.id.mDetectButton)
-         val mResultTextView = findViewById<TextView>(R.id.mResultTextView)
+        val mPhotoImageView = findViewById<ImageView>(R.id.mPhotoImageView)
+        val mGalleryButton = findViewById<Button>(R.id.mGalleryButton)
+        val mDetectButton = findViewById<CardView>(R.id.mDetectButton)
+        val mResultTextView = findViewById<TextView>(R.id.mResultTextView)
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
 
@@ -60,7 +60,7 @@ class GaleriActivity : AppCompatActivity() {
         mDetectButton.setOnClickListener {
             val startTime = SystemClock.uptimeMillis()
             val results = mClassifier.recognizeImage(mBitmap).firstOrNull()
-            mResultTextView.text = "${results?.title}\n Probabilitas: ${results?.percent}%"
+            mResultTextView.text = "${results?.title}\nProbabilitas: ${results?.percent}%"
             lastProcessingTimeMs = SystemClock.uptimeMillis() - startTime
         }
 
