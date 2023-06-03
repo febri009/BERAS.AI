@@ -6,14 +6,20 @@ import android.content.pm.PackageManager
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.SystemClock
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.berasai.databinding.ActivityKameraBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class KameraActivity : AppCompatActivity() {
 
-
+    private lateinit var classifier: Klasifikasi
+    private lateinit var resultbar: TextView
     private lateinit var binding: ActivityKameraBinding
 
     @SuppressLint("MissingPermission")
@@ -21,6 +27,9 @@ class KameraActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityKameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        resultbar = findViewById(R.id.hasil)
+        classifier = Klasifikasi(assets)
 
         if (!canUseCamera()) {
             requestCameraPermissions()
@@ -39,11 +48,12 @@ class KameraActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission", "SetTextI18n")
     private fun setupCamera() {
-        binding.camera.addPictureTakenListener {
-            AsyncTask.execute {
-                val startTime = SystemClock.uptimeMillis()//menghitung waktu awal
-                runOnUiThread {
-
+        binding.camera.addPictureTakenListener { image ->
+            GlobalScope.launch(Dispatchers.IO) {
+                val recognitions = classifier.recognize(image.data)
+                val txt = recognitions.joinToString(separator = "\n")
+                withContext(Dispatchers.Main) {
+                    resultbar.text = txt
                 }
             }
         }

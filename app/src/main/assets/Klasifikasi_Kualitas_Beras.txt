@@ -1,0 +1,3 @@
+ir64_medium
+ir64_premium
+ir64_tidak_layak
