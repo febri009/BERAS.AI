@@ -26,7 +26,7 @@ class KameraActivity : AppCompatActivity() {
         binding = ActivityKameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        resultbar = findViewById(R.id.hasil)
+        resultbar = findViewById(R.id.tvHasil1)
         classifier = Klasifikasi(assets)
 
         if (!canUseCamera()) {
@@ -46,14 +46,19 @@ class KameraActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission", "SetTextI18n")
     private fun setupCamera() {
-        binding.camera.addPictureTakenListener { image ->
-            GlobalScope.launch(Dispatchers.IO) {
-                val recognitions = classifier.recognize(image.data)
-                val txt = recognitions.joinToString(separator = "\n")
-                withContext(Dispatchers.Main) {
-                    resultbar.text = txt
+        binding.camera.addPictureTakenListener{image ->
+            try {
+                GlobalScope.launch(Dispatchers.IO) {
+                    val recognitions = classifier.recognize(image.data)
+                    val txt = recognitions.joinToString(separator = "\n")
+                    withContext(Dispatchers.Main) {
+                        resultbar.text = txt
+                    }
                 }
+            } catch (e: Exception){
+                Toast.makeText(this, "ERROR", Toast.LENGTH_LONG).show()
             }
+
         }
 
         binding.capturePhoto.setOnClickListener {

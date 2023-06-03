@@ -24,7 +24,7 @@ class Klasifikasi(private val assetManager: AssetManager) {
     }
 
 
-    fun recognize(data: ByteArray): List<KlasifikasiResult> {
+    fun recognize(data: ByteArray): List<Deteksi> {
         val result = Array(1) { FloatArray(labels.size) }
 
         val unscaledBitmap = BitmapFactory.decodeByteArray(data, 0, data.size)
@@ -51,12 +51,12 @@ class Klasifikasi(private val assetManager: AssetManager) {
         return parseResults(result)
     }
 
-    private fun parseResults(result: Array<FloatArray>): List<KlasifikasiResult> {
-        val recognitions = mutableListOf<KlasifikasiResult>()
+    private fun parseResults(result: Array<FloatArray>): List<Deteksi> {
+        val recognitions = mutableListOf<Deteksi>()
 
         labels.forEachIndexed { index, label ->
             val probability = result[0][index]
-            recognitions.add(KlasifikasiResult(label, probability))
+            recognitions.add(Deteksi(label, probability))
         }
 
         return recognitions.sortedByDescending { it.probability }
@@ -82,16 +82,13 @@ class Klasifikasi(private val assetManager: AssetManager) {
         return labels
     }
 
-
-    data class KlasifikasiResult(val label: String, val probability: Float)
-
     companion object {
         private const val BATCH_SIZE = 1 // process only 1 image at a time
         private const val MODEL_INPUT_SIZE = 224 // 224x224
         private const val BYTES_PER_CHANNEL = 4 // float size
 
         private const val LABELS_PATH = "Klasifikasi_Kualitas_Beras.txt"
-        private const val MODEL_PATH = "Klasifikasi_Kualitas_Beras_VGG16Net_nf.tflite"
+        private const val MODEL_PATH = "Model_Kualitas_Beras_MobileNet.tflite"
     }
 }
 
