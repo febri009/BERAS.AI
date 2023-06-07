@@ -11,6 +11,7 @@
         android:id="@+id/camera"
         android:layout_width="480dp"
         android:layout_height="640dp"
+        android:layout_marginBottom="0dp"
         android:adjustViewBounds="true"
         android:keepScreenOn="true"
         app:aspectRatio="4:3"
@@ -32,7 +33,7 @@
         android:layout_height="100dp"
         android:layout_gravity="start|center"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="400dp"
         android:clickable="true"
         app:cardBackgroundColor="@color/green2"
         app:cardCornerRadius="25dp"
@@ -63,7 +64,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="450dp"
         android:background="@drawable/bg_rounded_rect"
         android:scrollbars="none">
 

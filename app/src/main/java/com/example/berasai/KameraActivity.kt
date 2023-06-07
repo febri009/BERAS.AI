@@ -1,39 +1,43 @@
 package com.example.berasai
 
+
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.pm.PackageManager
+import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
+import android.os.SystemClock
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.core.*
+import androidx.camera.view.PreviewView
+import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
-import com.example.berasai.databinding.ActivityKameraBinding
+import androidx.core.content.ContextCompat
 import com.priyankvasa.android.cameraviewex.CameraView
-import kotlinx.coroutines.*
-import java.util.*
-
-
+import com.priyankvasa.android.cameraviewex.Modes
 
 class KameraActivity : AppCompatActivity() {
 
     private lateinit var classifier: Klasifikasi
+
     private lateinit var resultbar: TextView
-    private lateinit var camera: CameraView
-    private lateinit var binding: ActivityKameraBinding
+    private lateinit var cameraView: CameraView
+    private lateinit var capturePhoto: CardView
+
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityKameraBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_kamera)
 
-        resultbar = binding.tvHasil1
+        resultbar = findViewById(R.id.tvHasil1)
+        cameraView = findViewById(R.id.camera)
+        capturePhoto = findViewById(R.id.capture_photo)
+
         classifier = Klasifikasi(assets)
-        camera = binding.camera
 
         if (!canUseCamera()) {
             requestCameraPermissions()
@@ -50,31 +54,20 @@ class KameraActivity : AppCompatActivity() {
         )
     }
 
-
     @SuppressLint("MissingPermission", "SetTextI18n")
     private fun setupCamera() {
-        binding.camera.addPictureTakenListener { image ->
-            try {
-                GlobalScope.launch(Dispatchers.IO) {
-                    val recognitions = classifier.recognize(image.data)
-                    val txt = recognitions.joinToString(separator = "\n")
-                    withContext(Dispatchers.Main) {
-                        resultbar.text = txt
-                    }
+        cameraView.addPictureTakenListener {
+            AsyncTask.execute {
+                val recognitions = classifier.recognize(it.data)
+                val txt = recognitions.joinToString(separator = "\n")
+                runOnUiThread {
+                    resultbar.text = txt
                 }
-            } catch (e: Exception) {
-                Toast.makeText(this, "ERROR: ${e.message}", Toast.LENGTH_LONG).show()
-                Log.e("CameraError", "Error capturing image", e)
             }
         }
 
-        binding.capturePhoto.setOnClickListener {
-            try {
-                binding.camera.capture()
-            } catch (e: Exception) {
-                Toast.makeText(this, "ERROR: ${e.message}", Toast.LENGTH_LONG).show()
-                Log.e("CameraError", "Error capturing photo", e)
-            }
+        capturePhoto.setOnClickListener {
+            cameraView.capture()
         }
 
     }
@@ -100,20 +93,20 @@ class KameraActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         if (canUseCamera()) {
-            camera.start()
+            cameraView.start()
         }
     }
 
     override fun onPause() {
         if (canUseCamera()) {
-            camera.stop()
+            cameraView.stop()
         }
         super.onPause()
     }
 
     override fun onDestroy() {
         if (canUseCamera()) {
-            camera.destroy()
+            cameraView.destroy()
         }
         super.onDestroy()
     }
@@ -128,6 +121,7 @@ class KameraActivity : AppCompatActivity() {
         private const val REQUEST_CAMERA_CODE = 1
     }
 }
+
 
 
 
