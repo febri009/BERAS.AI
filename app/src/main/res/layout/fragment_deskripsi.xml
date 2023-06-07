@@ -23,21 +23,18 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Deskripsi"
-            android:layout_marginStart="160dp"
             android:layout_marginTop="20dp"
             android:textAppearance="@style/CustomtextStyle3"
             android:gravity="center" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Panduan buat kamu yang bingung dengan jenis-jenis kualitas beras"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
             android:layout_below="@id/title"
             android:textAppearance="@style/CustomtextStyle1"
             android:gravity="center"/>

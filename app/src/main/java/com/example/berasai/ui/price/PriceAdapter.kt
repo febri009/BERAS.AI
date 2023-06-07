@@ -1,5 +1,6 @@
 package com.example.berasai.ui.price
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -16,12 +17,13 @@ class PriceAdapter(private val listAdapterPrices: List<DataPrices>): RecyclerVie
 
     override fun getItemCount(): Int = listAdapterPrices.size
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val listPrices = listAdapterPrices[position]
 
         with(holder.binding){
             tvDKI.text = listPrices.provinsi
-            tvPrice.text = listPrices.harga.toString()
+            tvPrice.text = "Rp" + listPrices.harga.toString()
         }
     }
 

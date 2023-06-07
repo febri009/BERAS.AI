@@ -29,9 +29,10 @@ class PriceFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        priceViewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory()).get(PriceViewModel::class.java)
+        priceViewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[PriceViewModel::class.java]
 
         priceViewModel.listDataPrices.observe(viewLifecycleOwner){listDataPrices ->
             setDataPrices(listDataPrices)

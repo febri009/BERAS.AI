@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/deskripsi_fragment"
     android:background="@android:color/white"
-    tools:context=".ui.deskripsi.DeskripsiFragment">
+    tools:context=".ui.price.PriceFragment">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -23,21 +23,18 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Daftar Harga Beras"
-        android:layout_marginStart="130dp"
         android:layout_marginTop="20dp"
         android:textAppearance="@style/CustomtextStyle3"
         android:gravity="center" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Harga beras di setiap provinsi Indonesia"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginEnd="50dp"
         android:layout_below="@id/title"
         android:textAppearance="@style/CustomtextStyle1"
         android:gravity="center"/>
@@ -52,7 +49,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="35dp"
             android:orientation="vertical">
 
@@ -63,8 +60,9 @@
 
                 <TextView
                     android:id="@+id/tvProvinsi"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="Provinsi"
                     android:textAppearance="@style/CustomtextStyle3" />
 
@@ -72,7 +70,6 @@
                     android:id="@+id/tvHarga"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="180dp"
                     android:text="Harga/Kg"
                     android:textAppearance="@style/CustomtextStyle3" />
 
@@ -81,8 +78,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvListKonten"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
+                android:layout_height="502dp" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

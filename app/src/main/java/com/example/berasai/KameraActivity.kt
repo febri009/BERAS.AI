@@ -59,7 +59,7 @@ class KameraActivity : AppCompatActivity() {
         cameraView.addPictureTakenListener {
             AsyncTask.execute {
                 val recognitions = classifier.recognize(it.data)
-                val txt = recognitions.joinToString(separator = "\n")
+                val txt = recognitions.joinToString(separator = "\n\n")
                 runOnUiThread {
                     resultbar.text = txt
                 }
