@@ -1,9 +1,11 @@
 package com.example.berasai.ui.home
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.berasai.DetailKontenActivity
 import com.example.berasai.data.model.DataItem
 import com.example.berasai.databinding.ListKontenBinding
 
@@ -30,7 +32,11 @@ class HomeAdapter(private val listHome: List<DataItem>): RecyclerView.Adapter<Ho
             tvIsiKonten.text = listArticles.content
             tvNamaPenulis.text = listArticles.author
             tvTanggal.text = listArticles.createdAt
+            root.setOnClickListener {
+                val intent = Intent(root.context, DetailKontenActivity::class.java)
+                intent.putExtra(DetailKontenActivity.EXTRA_ARTICLE, listArticles.judul)
+                root.context.startActivity(intent)
+            }
         }
-
     }
 }

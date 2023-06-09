@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.berasai.DetailKontenActivity
 import com.example.berasai.data.model.DataItem
 import com.example.berasai.databinding.FragmentHomeBinding
 
@@ -19,6 +20,8 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var articleList : String
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,10 +40,25 @@ class HomeFragment : Fragment() {
             setDataArticles(listArticles)
         }
 
+        homeViewModel.loadHome.observe(viewLifecycleOwner){loadHome ->
+            showLoading(loadHome)
+        }
+
+        articleList = arguments?.getString(DetailKontenActivity.EXTRA_ARTICLE).toString()
+
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvListKonten.layoutManager = layoutManager
         val itemDecoration = DividerItemDecoration(requireActivity(), layoutManager.orientation)
         binding.rvListKonten.addItemDecoration(itemDecoration)
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading){
+            binding.progressHome.visibility = View.VISIBLE
+        }else{
+            binding.progressHome.visibility = View.GONE
+        }
+
     }
 
     private fun setDataArticles(listArticles: List<DataItem>) {

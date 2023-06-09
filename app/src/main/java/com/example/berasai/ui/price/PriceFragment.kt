@@ -38,10 +38,23 @@ class PriceFragment : Fragment() {
             setDataPrices(listDataPrices)
         }
 
+        priceViewModel.loadPrice.observe(viewLifecycleOwner){loadPrice ->
+            showLoading(loadPrice)
+        }
+
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvListKonten.layoutManager = layoutManager
         val itemDecoration = DividerItemDecoration(requireActivity(), layoutManager.orientation)
         binding.rvListKonten.addItemDecoration(itemDecoration)
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading){
+            binding.progressPrice.visibility = View.VISIBLE
+        }else{
+            binding.progressPrice.visibility = View.GONE
+        }
+
     }
 
     private fun setDataPrices(listDataPrices: List<DataPrices>) {
