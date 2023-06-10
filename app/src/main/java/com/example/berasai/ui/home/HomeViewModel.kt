@@ -4,39 +4,39 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.berasai.data.model.ArticlesResponse
-import com.example.berasai.data.model.DataItem
+import com.example.berasai.data.model.DataTengkulaks
+import com.example.berasai.data.model.TengkulaksResponse
 import com.example.berasai.data.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
-    private val _listArticles = MutableLiveData<List<DataItem>>()
-    val listArticles: LiveData<List<DataItem>> = _listArticles
+    private val _listTengkulaks = MutableLiveData<List<DataTengkulaks>>()
+    val listTengkulaks: LiveData<List<DataTengkulaks>> = _listTengkulaks
 
     private val _loadHome = MutableLiveData<Boolean>()
     val loadHome: LiveData<Boolean> = _loadHome
 
     init {
-        getListArticles()
+        getListTengkulaks()
     }
 
-    fun getListArticles(){
+    fun getListTengkulaks(){
         _loadHome.value = true
-        val client = ApiConfig.getApiService().getArticles()
-        client.enqueue(object : Callback<ArticlesResponse> {
+        val client = ApiConfig.getApiService().getTengkulaks()
+        client.enqueue(object : Callback<TengkulaksResponse> {
             override fun onResponse(
-                call: Call<ArticlesResponse>,
-                response: Response<ArticlesResponse>
+                call: Call<TengkulaksResponse>,
+                response: Response<TengkulaksResponse>
             ) {
                 _loadHome.value = false
                 if (response.isSuccessful){
-                    _listArticles.value = response.body()?.data
+                    _listTengkulaks.value = response.body()?.data
                 }
             }
 
-            override fun onFailure(call: Call<ArticlesResponse>, t: Throwable) {
+            override fun onFailure(call: Call<TengkulaksResponse>, t: Throwable) {
                 Log.e("HomeViewModel", "Failed to get Articles: ${t.message}")
             }
 

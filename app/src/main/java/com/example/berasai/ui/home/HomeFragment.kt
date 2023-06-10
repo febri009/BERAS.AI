@@ -8,8 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.berasai.DetailKontenActivity
-import com.example.berasai.data.model.DataItem
+import com.example.berasai.data.model.DataTengkulaks
 import com.example.berasai.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -18,7 +17,6 @@ class HomeFragment : Fragment() {
 
     private val binding get() = _binding!!
     private lateinit var homeViewModel: HomeViewModel
-    private lateinit var articleList : String
 
 
     override fun onCreateView(
@@ -34,15 +32,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeViewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[HomeViewModel::class.java]
 
-        homeViewModel.listArticles.observe(viewLifecycleOwner){listArticles ->
-            setDataArticles(listArticles)
+        homeViewModel.listTengkulaks.observe(viewLifecycleOwner){listTengkulaks ->
+            setDataArticles(listTengkulaks)
         }
 
         homeViewModel.loadHome.observe(viewLifecycleOwner){loadHome ->
             showLoading(loadHome)
         }
 
-        articleList = arguments?.getString(DetailKontenActivity.EXTRA_ARTICLE).toString()
 
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvListKonten.layoutManager = layoutManager
@@ -59,8 +56,8 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun setDataArticles(listArticles: List<DataItem>) {
-        val listUser = ArrayList<DataItem>()
+    private fun setDataArticles(listArticles: List<DataTengkulaks>) {
+        val listUser = ArrayList<DataTengkulaks>()
         for (user in listArticles) {
             listUser.clear()
             listUser.addAll(listArticles)

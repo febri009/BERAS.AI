@@ -66,7 +66,7 @@
                 android:id="@+id/tvPremium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Beraspedia"
+                android:text="Tengkulak Beras"
                 android:textColor="@color/green1"
                 android:textAppearance="@style/CustomtextStyle3"/>
 
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Konten informatif seputar beras"
+                android:text="Temukan tengkulak beras di daerahmu. Jaminan kualitas beras terbaik!"
                 android:textAppearance="@style/CustomtextStyle1" />
 
             <androidx.recyclerview.widget.RecyclerView
