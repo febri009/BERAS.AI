@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
 
         binding.searchView.setOnQueryTextListener(searchViewListener)
 
-        homeViewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
         homeViewModel.listTengkulaks.observe(viewLifecycleOwner){listTengkulaks ->
             setDataArticles(listTengkulaks)
         }

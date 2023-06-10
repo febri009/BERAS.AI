@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home_fragment"
     android:background="@android:color/white"
     tools:context=".ui.home.HomeFragment">
@@ -79,12 +80,24 @@
                 android:text="Temukan tengkulak beras di daerahmu. Jaminan kualitas beras terbaik!"
                 android:textAppearance="@style/CustomtextStyle1" />
 
-            <android.widget.SearchView
-                android:id="@+id/searchView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:queryHint="Ketik nama kota...." />
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_search"
+                android:elevation="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:iconifiedByDefault="false"
+                    android:paddingStart="-10dp"
+                    android:queryHint="Ketik nama kota"
+                    android:theme="@style/SearchView" />
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvListKonten"
