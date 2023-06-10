@@ -6,26 +6,20 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.AsyncTask
 import android.os.Bundle
-import android.os.SystemClock
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.view.PreviewView
 import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.priyankvasa.android.cameraviewex.CameraView
-import com.priyankvasa.android.cameraviewex.Modes
 
 class KameraActivity : AppCompatActivity() {
 
-    private lateinit var classifier: Klasifikasi
+    private lateinit var classifier: KlasifikasiDariKamera
 
-    private lateinit var resultbar: TextView
-    private lateinit var cameraView: CameraView
-    private lateinit var capturePhoto: CardView
+    private lateinit var result: TextView
+    private lateinit var camera: CameraView
+    private lateinit var capture: CardView
 
 
     @SuppressLint("MissingPermission")
@@ -33,16 +27,16 @@ class KameraActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kamera)
 
-        resultbar = findViewById(R.id.tvHasil1)
-        cameraView = findViewById(R.id.camera)
-        capturePhoto = findViewById(R.id.capture_photo)
+        result = findViewById(R.id.tvHasil1)
+        camera = findViewById(R.id.camera)
+        capture = findViewById(R.id.capture_photo)
 
-        classifier = Klasifikasi(assets)
+        classifier = KlasifikasiDariKamera(assets)
 
-        if (!canUseCamera()) {
-            requestCameraPermissions()
-        } else {
+        if (hasCameraPermission()) {
             setupCamera()
+        } else {
+            requestCameraPermissions()
         }
     }
 
@@ -50,24 +44,24 @@ class KameraActivity : AppCompatActivity() {
         ActivityCompat.requestPermissions(
             this,
             arrayOf(Manifest.permission.CAMERA),
-            REQUEST_CAMERA_CODE
+            requestCameraCode
         )
     }
 
     @SuppressLint("MissingPermission", "SetTextI18n")
     private fun setupCamera() {
-        cameraView.addPictureTakenListener {
+        camera.addPictureTakenListener {
             AsyncTask.execute {
                 val recognitions = classifier.recognize(it.data)
                 val txt = recognitions.joinToString(separator = "\n\n")
                 runOnUiThread {
-                    resultbar.text = txt
+                    result.text = txt
                 }
             }
         }
 
-        capturePhoto.setOnClickListener {
-            cameraView.capture()
+        capture.setOnClickListener {
+            camera.capture()
         }
 
     }
@@ -79,7 +73,7 @@ class KameraActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (REQUEST_CAMERA_CODE == requestCode) {
+        if (requestCameraCode == requestCode) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 setupCamera()
             } else {
@@ -92,33 +86,33 @@ class KameraActivity : AppCompatActivity() {
     @SuppressLint("MissingPermission")
     override fun onResume() {
         super.onResume()
-        if (canUseCamera()) {
-            cameraView.start()
+        if (hasCameraPermission()) {
+            camera.start()
         }
     }
 
     override fun onPause() {
-        if (canUseCamera()) {
-            cameraView.stop()
+        if (hasCameraPermission()) {
+            camera.stop()
         }
         super.onPause()
     }
 
     override fun onDestroy() {
-        if (canUseCamera()) {
-            cameraView.destroy()
+        if (hasCameraPermission()) {
+            camera.destroy()
         }
         super.onDestroy()
     }
 
-    private fun canUseCamera() =
+    private fun hasCameraPermission() =
         ActivityCompat.checkSelfPermission(
             this,
             Manifest.permission.CAMERA
         ) == PackageManager.PERMISSION_GRANTED
 
     companion object {
-        private const val REQUEST_CAMERA_CODE = 1
+        private const val requestCameraCode = 1
     }
 }
 

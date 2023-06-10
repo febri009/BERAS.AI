@@ -68,14 +68,6 @@
                 android:textSize="14sp"/>
 
             <TextView
-                android:id="@+id/tvTanggal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="26 Mei 2023"
-                android:textAppearance="@style/CustomtextStyle1"
-                android:textSize="10sp"/>
-
-            <TextView
                 android:id="@+id/tvIsi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

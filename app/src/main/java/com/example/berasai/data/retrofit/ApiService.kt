@@ -6,13 +6,14 @@ import com.example.berasai.data.model.PricesResponse
 import com.example.berasai.data.model.TengkulaksResponse
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiService {
     @GET("articles")
     fun getArticles(): Call<ArticlesResponse>
 
-    @GET("articles")
-    fun getDetail(): Call<DataItem>
+    @GET("articles/{title}")
+    fun getDetail(@Path("title") title: String): Call<DataItem>
 
     @GET("prices")
     fun getPrices(): Call<PricesResponse>

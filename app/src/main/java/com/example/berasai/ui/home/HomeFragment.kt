@@ -16,8 +16,6 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var articleList : String
@@ -34,7 +32,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeViewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[HomeViewModel::class.java]
 
         homeViewModel.listArticles.observe(viewLifecycleOwner){listArticles ->
             setDataArticles(listArticles)

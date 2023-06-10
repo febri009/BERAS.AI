@@ -13,7 +13,7 @@ import java.nio.ByteOrder
 import java.nio.channels.FileChannel
 import java.util.*
 
-class Klasifikasi(assetManager: AssetManager) {
+class KlasifikasiDariKamera(assetManager: AssetManager) {
 
     private val labels: List<String>
     private val model: Interpreter
@@ -93,14 +93,14 @@ class Klasifikasi(assetManager: AssetManager) {
     }
 
     companion object {
-        private const val BATCH_SIZE = 1 // process only 1 image at a time
-        private const val MODEL_INPUT_SIZE = 224 // 224x224
-        private const val BYTES_PER_CHANNEL = 4 // float size
-        private const val PIXEL_SIZE = 3 // rgb
-
+        private const val BATCH_SIZE = 1
+        private const val MODEL_INPUT_SIZE = 224
+        private const val BYTES_PER_CHANNEL = 4
+        private const val PIXEL_SIZE = 3
         private const val LABELS_PATH = "Klasifikasi_Kualitas_Beras.txt"
         private const val MODEL_PATH = "Model_Kualitas_Beras_MobileNet.tflite"
     }
 
 }
+
 

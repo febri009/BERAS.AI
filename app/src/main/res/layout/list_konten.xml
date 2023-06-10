@@ -72,16 +72,6 @@
                     android:textAppearance="@style/CustomtextStyle1"
                     android:textSize="10dp"/>
 
-                <TextView
-                    android:id="@+id/tvTanggal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginStart="130dp"
-                    android:maxLines="1"
-                    android:text="20 Mei 2023"
-                    android:textAppearance="@style/CustomtextStyle1"
-                    android:textSize="10dp"/>
             </LinearLayout>
 
         </LinearLayout>

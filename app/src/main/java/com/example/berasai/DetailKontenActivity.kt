@@ -9,32 +9,39 @@ import com.example.berasai.databinding.ActivityDetailKontenBinding
 
 class DetailKontenActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailKontenBinding
-    private lateinit var viewModel:DetailKontenViewModel
+    private lateinit var viewModel: DetailKontenViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailKontenBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailKontenViewModel::class.java)
-        
-        viewModel.listDetailArticles.observe(this){listDetailArticles ->
-            setDetailArticles(listDetailArticles)
+
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailKontenViewModel::class.java]
+
+        val articleTitle = intent.getStringExtra(EXTRA_ARTICLE)
+        if (articleTitle != null) {
+            viewModel.getDetail(articleTitle)
+        }
+
+        viewModel.detailArticle.observe(this) { detailArticle ->
+            setDetailArticles(detailArticle)
         }
     }
 
-    private fun setDetailArticles(listDetailArticles: DataItem) {
+    private fun setDetailArticles(detailArticle: DataItem) {
         Glide.with(this@DetailKontenActivity)
-            .load(listDetailArticles.imageUrl)
+            .load(detailArticle.imageUrl)
             .into(binding.ivThumbnail)
         binding.apply {
-            tvJudul.text = listDetailArticles.title
-            tvPenulis.text = listDetailArticles.author
-//            tvTanggal.text = listDetailArticles.createdAt
-            tvIsi.text = listDetailArticles.content
+            tvJudul.text = detailArticle.title
+            tvPenulis.text = detailArticle.author
+            //tvTanggal.text = detailArticle.createdAt.toString()
+            tvIsi.text = detailArticle.content
         }
     }
-    companion object{
+
+    companion object {
         const val EXTRA_ARTICLE = "extra_article"
     }
 }
+

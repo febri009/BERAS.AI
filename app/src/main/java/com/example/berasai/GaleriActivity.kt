@@ -20,7 +20,7 @@ import java.io.IOException
 import java.util.*
 
 class GaleriActivity : AppCompatActivity() {
-    private lateinit var mClassifier: DeteksiDariGaleri
+    private lateinit var mClassifier: KlasifikasiDariGaleri
     private lateinit var mBitmap: Bitmap
 
     private val mGalleryRequestCode = 2
@@ -45,13 +45,7 @@ class GaleriActivity : AppCompatActivity() {
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
 
-        mClassifier = DeteksiDariGaleri(assets, mModelPath, mLabelPath, mInputSize)
-
-        assets.open(mSamplePath).use {
-            mBitmap = BitmapFactory.decodeStream(it)
-            mBitmap = Bitmap.createScaledBitmap(mBitmap, mInputSize, mInputSize, true)
-            mPhotoImageView.setImageBitmap(mBitmap)
-        }
+        mClassifier = KlasifikasiDariGaleri(assets, mModelPath, mLabelPath, mInputSize)
 
         mGalleryButton.setOnClickListener {
             galleryLauncher.launch("image/*")
