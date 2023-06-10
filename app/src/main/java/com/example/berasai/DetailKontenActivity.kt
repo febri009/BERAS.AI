@@ -25,12 +25,12 @@ class DetailKontenActivity : AppCompatActivity() {
 
     private fun setDetailArticles(listDetailArticles: DataItem) {
         Glide.with(this@DetailKontenActivity)
-            .load(listDetailArticles.articleImages)
+            .load(listDetailArticles.imageUrl)
             .into(binding.ivThumbnail)
         binding.apply {
-            tvJudul.text = listDetailArticles.judul
+            tvJudul.text = listDetailArticles.title
             tvPenulis.text = listDetailArticles.author
-            tvTanggal.text = listDetailArticles.createdAt
+//            tvTanggal.text = listDetailArticles.createdAt
             tvIsi.text = listDetailArticles.content
         }
     }

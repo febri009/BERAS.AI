@@ -21,7 +21,7 @@ class ApiConfig {
                 .build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://cloudrun-fmkmntezza-et.a.run.app/")
+                .baseUrl("https://cloudrun-2q5w4z2mgq-uc.a.run.app/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

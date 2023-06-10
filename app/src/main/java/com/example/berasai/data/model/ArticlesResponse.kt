@@ -14,44 +14,44 @@ data class ArticlesResponse(
 	val message: String
 )
 
+data class CreatedAt(
+
+	@field:SerializedName("_nanoseconds")
+	val nanoseconds: Int,
+
+	@field:SerializedName("_seconds")
+	val seconds: Int
+)
+
+data class UpdatedAt(
+
+	@field:SerializedName("_nanoseconds")
+	val nanoseconds: Int,
+
+	@field:SerializedName("_seconds")
+	val seconds: Int
+)
+
 data class DataItem(
 
 	@field:SerializedName("createdAt")
-	val createdAt: String,
-
-	@field:SerializedName("article_images")
-	val articleImages: List<ArticleImagesItem>,
+	val createdAt: CreatedAt,
 
 	@field:SerializedName("author")
 	val author: String,
 
-	@field:SerializedName("id")
-	val id: Int,
+	@field:SerializedName("imageUrl")
+	val imageUrl: String,
 
-	@field:SerializedName("judul")
-	val judul: String,
+	@field:SerializedName("id")
+	val id: String,
+
+	@field:SerializedName("title")
+	val title: String,
 
 	@field:SerializedName("content")
 	val content: String,
 
 	@field:SerializedName("updatedAt")
-	val updatedAt: String
-)
-
-data class ArticleImagesItem(
-
-	@field:SerializedName("createdAt")
-	val createdAt: String,
-
-	@field:SerializedName("imagePath")
-	val imagePath: String,
-
-	@field:SerializedName("articleId")
-	val articleId: Int,
-
-	@field:SerializedName("id")
-	val id: Int,
-
-	@field:SerializedName("updatedAt")
-	val updatedAt: String
+	val updatedAt: UpdatedAt
 )

@@ -22,8 +22,8 @@ class PriceAdapter(private val listAdapterPrices: List<DataPrices>): RecyclerVie
         val listPrices = listAdapterPrices[position]
 
         with(holder.binding){
-            tvDKI.text = listPrices.provinsi
-            tvPrice.text = "Rp" + listPrices.harga.toString()
+            tvDKI.text = listPrices.province
+            tvPrice.text = "Rp" + listPrices.price.toString()
         }
     }
 

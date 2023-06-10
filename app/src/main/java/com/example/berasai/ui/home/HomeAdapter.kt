@@ -24,17 +24,16 @@ class HomeAdapter(private val listHome: List<DataItem>): RecyclerView.Adapter<Ho
 
         with(holder.binding) {
             Glide.with(root.context)
-                .load(listArticles.articleImages)
+                .load(listArticles.imageUrl)
                 .circleCrop()
                 .centerCrop()
                 .into(ivGambarKonten)
-            tvJudulKonten.text = listArticles.judul
+            tvJudulKonten.text = listArticles.title
             tvIsiKonten.text = listArticles.content
             tvNamaPenulis.text = listArticles.author
-            tvTanggal.text = listArticles.createdAt
             root.setOnClickListener {
                 val intent = Intent(root.context, DetailKontenActivity::class.java)
-                intent.putExtra(DetailKontenActivity.EXTRA_ARTICLE, listArticles.judul)
+                intent.putExtra(DetailKontenActivity.EXTRA_ARTICLE, listArticles.title)
                 root.context.startActivity(intent)
             }
         }

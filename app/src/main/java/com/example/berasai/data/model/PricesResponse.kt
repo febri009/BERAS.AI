@@ -14,20 +14,38 @@ data class PricesResponse(
 	val message: String
 )
 
+data class UpdatedAtPrices(
+
+	@field:SerializedName("_nanoseconds")
+	val nanoseconds: Int,
+
+	@field:SerializedName("_seconds")
+	val seconds: Int
+)
+
+data class CreatedAtPrices(
+
+	@field:SerializedName("_nanoseconds")
+	val nanoseconds: Int,
+
+	@field:SerializedName("_seconds")
+	val seconds: Int
+)
+
 data class DataPrices(
 
-	@field:SerializedName("provinsi")
-	val provinsi: String,
-
 	@field:SerializedName("createdAt")
-	val createdAt: String,
+	val createdAt: CreatedAtPrices,
 
-	@field:SerializedName("harga")
-	val harga: Int,
+	@field:SerializedName("province")
+	val province: String,
+
+	@field:SerializedName("price")
+	val price: Int,
 
 	@field:SerializedName("id")
-	val id: Int,
+	val id: String,
 
 	@field:SerializedName("updatedAt")
-	val updatedAt: String
+	val updatedAt: UpdatedAtPrices
 )

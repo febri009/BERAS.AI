@@ -3,6 +3,7 @@ package com.example.berasai.data.retrofit
 import com.example.berasai.data.model.ArticlesResponse
 import com.example.berasai.data.model.DataItem
 import com.example.berasai.data.model.PricesResponse
+import com.example.berasai.data.model.TengkulaksResponse
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -15,4 +16,7 @@ interface ApiService {
 
     @GET("prices")
     fun getPrices(): Call<PricesResponse>
+
+    @GET("tengkulaks")
+    fun getTengkulaks():Call<TengkulaksResponse>
 }
