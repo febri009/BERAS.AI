@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.berasai.data.model.DataTengkulaks
 import com.example.berasai.databinding.ListKontenBinding
 
-class HomeAdapter(private val listHome: List<DataTengkulaks>): RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+class HomeAdapter(var listHome: List<DataTengkulaks>): RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+
+    private var filteredList: List<DataTengkulaks> = listHome.toList()
+
     class ViewHolder(var binding: ListKontenBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -16,10 +19,10 @@ class HomeAdapter(private val listHome: List<DataTengkulaks>): RecyclerView.Adap
         return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = listHome.size
+    override fun getItemCount(): Int = filteredList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val listTengkulak = listHome[position]
+        val listTengkulak = filteredList[position]
 
         with(holder.binding) {
             tvName.text = listTengkulak.name
@@ -33,4 +36,14 @@ class HomeAdapter(private val listHome: List<DataTengkulaks>): RecyclerView.Adap
         }
     }
 
+    fun filterList(query: String) {
+        filteredList = if (query.isEmpty()) {
+            listHome.toList()
+        } else {
+            listHome.filter { item ->
+                item.address.contains(query, ignoreCase = true)
+            }
+        }
+        notifyDataSetChanged()
+    }
 }
