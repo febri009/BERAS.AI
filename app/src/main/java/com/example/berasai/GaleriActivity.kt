@@ -28,7 +28,6 @@ class GaleriActivity : AppCompatActivity() {
     private val mInputSize = 224
     private val mModelPath = "Model_Kualitas_Beras_MobileNet.tflite"
     private val mLabelPath = "Klasifikasi_Kualitas_Beras.txt"
-    private val mSamplePath = "ir64_tidak_layak.jpg"
     private lateinit var galleryLauncher: ActivityResultLauncher<String>
 
     private var lastProcessingTimeMs: Long = 0
