@@ -12,8 +12,8 @@ interface ApiService {
     @GET("articles")
     fun getArticles(): Call<ArticlesResponse>
 
-    @GET("articles/{title}")
-    fun getDetail(@Path("title") title: String): Call<DataItem>
+    @GET("articles/{tittle}")
+    fun getDetail(@Path("tittle") title: String): Call<DataItem>
 
     @GET("prices")
     fun getPrices(): Call<PricesResponse>

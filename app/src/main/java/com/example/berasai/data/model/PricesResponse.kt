@@ -23,15 +23,6 @@ data class UpdatedAtPrices(
 	val seconds: Int
 )
 
-data class CreatedAtPrices(
-
-	@field:SerializedName("_nanoseconds")
-	val nanoseconds: Int,
-
-	@field:SerializedName("_seconds")
-	val seconds: Int
-)
-
 data class DataPrices(
 
 	@field:SerializedName("createdAt")
@@ -48,4 +39,13 @@ data class DataPrices(
 
 	@field:SerializedName("updatedAt")
 	val updatedAt: UpdatedAtPrices
+)
+
+data class CreatedAtPrices(
+
+	@field:SerializedName("_nanoseconds")
+	val nanoseconds: Int,
+
+	@field:SerializedName("_seconds")
+	val seconds: Int
 )

@@ -14,7 +14,7 @@ data class ArticlesResponse(
 	val message: String
 )
 
-data class CreatedAt(
+data class UpdatedAt(
 
 	@field:SerializedName("_nanoseconds")
 	val nanoseconds: Int,
@@ -23,7 +23,7 @@ data class CreatedAt(
 	val seconds: Int
 )
 
-data class UpdatedAt(
+data class CreatedAt(
 
 	@field:SerializedName("_nanoseconds")
 	val nanoseconds: Int,

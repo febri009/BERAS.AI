@@ -35,7 +35,7 @@ data class DataTengkulaks(
 	val updatedAt: UpdatedAtTengkulaks
 )
 
-data class UpdatedAtTengkulaks(
+data class CreatedAtTengkulaks(
 
 	@field:SerializedName("_nanoseconds")
 	val nanoseconds: Int,
@@ -44,7 +44,7 @@ data class UpdatedAtTengkulaks(
 	val seconds: Int
 )
 
-data class CreatedAtTengkulaks(
+data class UpdatedAtTengkulaks(
 
 	@field:SerializedName("_nanoseconds")
 	val nanoseconds: Int,
