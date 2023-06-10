@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -12,6 +13,9 @@ import com.example.berasai.data.model.DataTengkulaks
 import com.example.berasai.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
+
+    private lateinit var adapter: HomeAdapter
+    private var filteredList: List<DataTengkulaks> = emptyList()
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -32,6 +36,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeViewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[HomeViewModel::class.java]
 
+        adapter = HomeAdapter(filteredList)
+
+        binding.rvListKonten.adapter = adapter
+
         homeViewModel.listTengkulaks.observe(viewLifecycleOwner){listTengkulaks ->
             setDataArticles(listTengkulaks)
         }
@@ -45,6 +53,36 @@ class HomeFragment : Fragment() {
         binding.rvListKonten.layoutManager = layoutManager
         val itemDecoration = DividerItemDecoration(requireActivity(), layoutManager.orientation)
         binding.rvListKonten.addItemDecoration(itemDecoration)
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+             override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+             override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { filterData(it) }
+                return true
+            }
+        })
+
+        homeViewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[HomeViewModel::class.java]
+        homeViewModel.listTengkulaks.observe(viewLifecycleOwner) { listTengkulaks ->
+            setDataArticles(listTengkulaks)
+        }
+        homeViewModel.loadHome.observe(viewLifecycleOwner) { loadHome ->
+            showLoading(loadHome)
+        }
+    }
+
+    private fun filterData(query: String) {
+        val filtered = mutableListOf<DataTengkulaks>()
+        for (item in homeViewModel.listTengkulaks.value.orEmpty()) {
+            if (item.name.contains(query, true)) {
+                filtered.add(item)
+            }
+        }
+        filteredList = filtered
+        adapter.notifyDataSetChanged()
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -57,6 +95,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun setDataArticles(listArticles: List<DataTengkulaks>) {
+        filteredList = listArticles
+        adapter.notifyDataSetChanged()
         val listUser = ArrayList<DataTengkulaks>()
         for (user in listArticles) {
             listUser.clear()

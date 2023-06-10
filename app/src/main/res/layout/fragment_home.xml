@@ -79,6 +79,13 @@
                 android:text="Temukan tengkulak beras di daerahmu. Jaminan kualitas beras terbaik!"
                 android:textAppearance="@style/CustomtextStyle1" />
 
+            <android.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:queryHint="Ketik nama kota...." />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvListKonten"
                 android:layout_width="match_parent"

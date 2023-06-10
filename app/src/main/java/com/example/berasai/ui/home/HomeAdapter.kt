@@ -26,8 +26,8 @@ class HomeAdapter(private val listHome: List<DataTengkulaks>): RecyclerView.Adap
             tvAddress.text = listTengkulak.address
             btPhone.setOnClickListener {
                 val phone = listTengkulak.phone
-                val intent = Intent(Intent.ACTION_DIAL)
-                intent.data = Uri.parse("tel:$phone")
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(phone)
                 holder.itemView.context.startActivity(intent)
             }
         }
