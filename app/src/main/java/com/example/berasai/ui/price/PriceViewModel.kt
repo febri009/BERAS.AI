@@ -18,8 +18,12 @@ class PriceViewModel : ViewModel() {
     private val _loadPrice = MutableLiveData<Boolean>()
     val loadPrice: LiveData<Boolean> = _loadPrice
 
+    private val _priceDate = MutableLiveData<DataPrices>()
+    val priceDate: LiveData<DataPrices> = _priceDate
+
     init {
         getListPrices()
+        getDatePrice()
     }
 
     fun getListPrices(){
@@ -38,6 +42,22 @@ class PriceViewModel : ViewModel() {
 
             override fun onFailure(call: Call<PricesResponse>, t: Throwable) {
                 Log.e("PriceViewModel", "Failed to get Prices: ${t.message}")
+            }
+
+        })
+    }
+
+    fun getDatePrice(){
+        val client = ApiConfig.getApiService().getDate()
+        client.enqueue(object : Callback<DataPrices>{
+            override fun onResponse(call: Call<DataPrices>, response: Response<DataPrices>) {
+                if (response.isSuccessful){
+                    _priceDate.value = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<DataPrices>, t: Throwable) {
+                Log.e("PriceViewModel", "Failed to get date: ${t.message}")
             }
 
         })
