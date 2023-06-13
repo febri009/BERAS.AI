@@ -59,6 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/premium"
+                android:textColor="@color/black"
                 android:textAppearance="@style/CustomtextStyle3"/>
 
 
@@ -68,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/deskripsi_premium"
+                android:textColor="@color/black"
                 android:textAppearance="@style/CustomtextStyle1"
                 android:justificationMode="inter_word"
                 tools:targetApi="o" />
@@ -84,6 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:text="@string/medium"
+                android:textColor="@color/black"
                 android:textAppearance="@style/CustomtextStyle3"/>
 
 
@@ -93,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/deskripsi_medium"
+                android:textColor="@color/black"
                 android:textAppearance="@style/CustomtextStyle1"
                 android:justificationMode="inter_word"
                 tools:targetApi="o" />
@@ -109,8 +113,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:text="@string/tidak_layak"
+                android:textColor="@color/black"
                 android:textAppearance="@style/CustomtextStyle3"/>
-
 
             <TextView
                 android:id="@+id/tvDeskripsiBad"
@@ -118,6 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/deskripsi_tidak_layak"
+                android:textColor="@color/black"
                 android:textAppearance="@style/CustomtextStyle1"
                 android:justificationMode="inter_word"
                 tools:targetApi="o" />

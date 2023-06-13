@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="green1">#59AC3E</color>
+    <color name="green2">#338A40</color>
+    <color name="green3">#FFFFFF</color>
+    <color name="yellow1">#F9B408</color>
+    <color name="yellow2">#DD9403</color>
+    <color name="yellow3">#80DD9403</color>
+    <color name="grey1">#000000</color>
+    <color name="black">#FFFFFF</color>
+    <color name="white">#262626</color>
+    <color name="colorAccent">#262626</color>
+    <color name="card_pressed_color">#ECECEC</color>
+</resources>

@@ -20,6 +20,7 @@
         android:layout_marginBottom="160dp"
         android:text="@string/Halo"
         android:textAppearance="@style/CustomtextStyle2"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/dividerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

@@ -19,9 +19,9 @@
 
     <TextView
         android:id="@+id/tvPrice"
-        android:layout_width="180dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="380dp"
         android:text="@string/rp15_000"
         android:textColor="@color/black"
         android:textSize="14sp"

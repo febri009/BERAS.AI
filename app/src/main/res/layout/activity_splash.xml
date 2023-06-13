@@ -11,13 +11,13 @@
         android:id="@+id/logo"
         android:layout_width="250dp"
         android:layout_height="250dp"
+        android:layout_marginTop="-80dp"
+        android:contentDescription="@string/logo"
         android:src="@drawable/logo"
-        android:layout_marginTop="-160dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/logo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
@@ -25,11 +25,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="204dp"
         android:indeterminate="true"
         android:indeterminateTint="@color/green1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,7 +31,7 @@ class GaleriActivity : AppCompatActivity() {
         binding = ActivityGaleriBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         mClassifier = ClassificationFromGallery(assets, mModelPath, mLabelPath, mInputSize)
 

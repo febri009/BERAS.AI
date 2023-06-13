@@ -33,7 +33,7 @@
 
     <style name="SearchView" parent="">
         <item name="android:editTextColor">@android:color/black</item>
-        <item name="android:textColorHint">@android:color/black</item>
+        <item name="android:textColorHint">@color/black</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">12sp</item>
     </style>
@@ -43,4 +43,5 @@
     </style>
     <style name="Theme.BERASAI.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.BERASAI.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

@@ -60,5 +60,6 @@
     <string name="namaa_tengkulak">Beras Sumber Rejeki</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel fringilla libero. Curabitur posuere lectus vitae lectus auctor, in auctor ante congue.</string>
     <string name="button_hubungi">Hubungi Tengkulak</string>
+    <string name="note">Note : Jika anda mengalami permasalahan setelah mengizinkan penggunaan camera, silahkan akses fitur kamera kembali. Fitur akan berfungsi dengan baik</string>
 
 </resources>

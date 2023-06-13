@@ -24,10 +24,9 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="336dp"
-            android:layout_marginStart="160dp"
             android:layout_marginTop="65dp"
+            android:layout_gravity="end"
             android:background="@drawable/female"
-            android:gravity="bottom"
             android:orientation="horizontal" />
     </FrameLayout>
 
@@ -78,6 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/tengkulak_desc"
+                android:textColor="@color/black"
                 android:textAppearance="@style/CustomtextStyle1" />
 
             <LinearLayout
