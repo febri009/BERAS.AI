@@ -30,7 +30,7 @@
                 android:layout_marginBottom="5dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="Beras Sumber Rejeki"
+                android:text="@string/namaa_tengkulak"
                 android:textAppearance="@style/CustomtextStyle3" />
 
             <TextView
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:maxLines="3"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel fringilla libero. Curabitur posuere lectus vitae lectus auctor, in auctor ante congue."
+                android:text="@string/lorem"
                 android:textAppearance="@style/CustomtextStyle1" />
 
             <Button
@@ -52,7 +52,7 @@
                 android:padding="10dp"
                 android:maxLines="1"
                 android:drawableEnd="@drawable/ic_arrow_forward"
-                android:text="Hubungi Tengkulak"
+                android:text="@string/button_hubungi"
                 android:textAppearance="@style/CustomtextStyle1"/>
 
             </LinearLayout>

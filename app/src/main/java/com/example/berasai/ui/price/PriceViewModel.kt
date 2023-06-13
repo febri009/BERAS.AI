@@ -19,14 +19,13 @@ class PriceViewModel : ViewModel() {
     val loadPrice: LiveData<Boolean> = _loadPrice
 
     private val _priceDate = MutableLiveData<DataPrices>()
-    val priceDate: LiveData<DataPrices> = _priceDate
 
     init {
         getListPrices()
         getDatePrice()
     }
 
-    fun getListPrices(){
+    private fun getListPrices(){
         _loadPrice.value = true
         val client = ApiConfig.getApiService().getPrices()
         client.enqueue(object : Callback<PricesResponse>{
@@ -47,7 +46,7 @@ class PriceViewModel : ViewModel() {
         })
     }
 
-    fun getDatePrice(){
+    private fun getDatePrice(){
         val client = ApiConfig.getApiService().getDate()
         client.enqueue(object : Callback<DataPrices>{
             override fun onResponse(call: Call<DataPrices>, response: Response<DataPrices>) {

@@ -7,9 +7,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -37,17 +39,14 @@
         </activity>
 
         <activity
-            android:name=".GaleriActivity"/>
+            android:name=".detection.GaleriActivity"/>
         <activity
-            android:name=".KameraActivity"/>
+            android:name=".detection.KameraActivity"/>
         <activity
-            android:name=".DetailKontenActivity"
+            android:name=".ui.info.AboutActivity"
             android:exported="false" />
         <activity
-            android:name=".AboutActivity"
-            android:exported="false" />
-        <activity
-            android:name=".BantuanActivity"
+            android:name=".ui.info.BantuanActivity"
             android:exported="false"
             android:label="@string/title_activity_bantuan"
             android:theme="@style/Theme.BERASAI.NoActionBar" />

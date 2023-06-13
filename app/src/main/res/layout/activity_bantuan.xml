@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
-    tools:context=".BantuanActivity">
+    tools:context=".ui.info.BantuanActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -18,7 +18,8 @@
             android:adjustViewBounds="true"
             android:background="@color/green1"
             android:alpha="0.5"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:contentDescription="@string/gambar" />
 
         <LinearLayout
             android:layout_width="160dp"
@@ -57,7 +58,7 @@
                 android:id="@+id/tvCaraKerja"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cara Kerja Aplikasi"
+                android:text="@string/cara_kerja_aplikasi"
                 android:textAppearance="@style/CustomtextStyle3"/>
 
             <View
@@ -65,7 +66,6 @@
                 android:layout_width="365dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
-                android:layout_below="@+id/tvCaraKerja"
                 android:background="@color/yellow2"/>
 
             <TextView
@@ -76,13 +76,14 @@
                 android:layout_marginBottom="20dp"
                 android:text="@string/content_work"
                 android:textAppearance="@style/CustomtextStyle1"
-                android:justificationMode="inter_word"/>
+                android:justificationMode="inter_word"
+                tools:targetApi="o" />
 
             <TextView
                 android:id="@+id/tvCaraMenggunakan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cara Menggunakan"
+                android:text="@string/cara_menggunakan"
                 android:textAppearance="@style/CustomtextStyle3"/>
 
             <View
@@ -90,7 +91,6 @@
                 android:layout_width="365dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
-                android:layout_below="@+id/tvDeskripsiCaraKerja"
                 android:background="@color/yellow2"/>
 
             <TextView
@@ -101,7 +101,8 @@
                 android:layout_marginBottom="20dp"
                 android:text="@string/content_step"
                 android:textAppearance="@style/CustomtextStyle1"
-                android:justificationMode="inter_word"/>
+                android:justificationMode="inter_word"
+                tools:targetApi="o" />
 
         </LinearLayout>
 

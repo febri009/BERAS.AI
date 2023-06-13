@@ -1,4 +1,4 @@
-package com.example.berasai
+package com.example.berasai.detection
 
 import android.content.res.AssetManager
 import android.graphics.Bitmap
@@ -12,19 +12,28 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.channels.FileChannel
 import java.util.*
+import kotlin.math.pow
+import kotlin.math.roundToInt
 
-class KlasifikasiDariKamera(assetManager: AssetManager) {
+class ClassificationFromCamera(assetManager: AssetManager) {
 
-    private val labels: List<String>
+    private val label: List<String>
     private val model: Interpreter
+    data class Recognition(
+        val name: String,
+        val probability: Float
+    ) {
+        override fun toString() =
+            "$name, akurasi : ${probability}%"
+    }
 
     init {
         model = Interpreter(getModelByteBuffer(assetManager, MODEL_PATH))
-        labels = getLabels(assetManager, LABELS_PATH)
+        label = getLabels(assetManager, LABELS_PATH)
     }
 
-    fun recognize(data: ByteArray): List<Deteksi> {
-        val result = Array(BATCH_SIZE) { FloatArray(labels.size) }
+    fun recognize(data: ByteArray): List<Recognition> {
+        val result = Array(BATCH_SIZE) { FloatArray(label.size) }
 
         val unscaledBitmap = BitmapFactory.decodeByteArray(data, 0, data.size)
         val bitmap =
@@ -57,16 +66,20 @@ class KlasifikasiDariKamera(assetManager: AssetManager) {
         return parseResults(result)
     }
 
-    private fun parseResults(result: Array<FloatArray>): List<Deteksi> {
+    private fun parseResults(result: Array<FloatArray>): List<Recognition> {
+        val recognitions = mutableListOf<Recognition>()
 
-        val recognitions = mutableListOf<Deteksi>()
-
-        labels.forEachIndexed { index, label ->
+        label.forEachIndexed { index, label ->
             val probability = result[0][index]
-            recognitions.add(Deteksi(label, probability))
+            val roundedProbability = (probability * 100).roundTo(2)
+            recognitions.add(Recognition(label, roundedProbability))
         }
-
         return recognitions.sortedByDescending { it.probability }
+    }
+
+    private fun Float.roundTo(decimalPlaces: Int): Float {
+        val factor = 10.0.pow(decimalPlaces.toDouble()).toFloat()
+        return (this * factor).roundToInt() / factor
     }
 
     @Throws(IOException::class)
@@ -100,7 +113,6 @@ class KlasifikasiDariKamera(assetManager: AssetManager) {
         private const val LABELS_PATH = "Klasifikasi_Kualitas_Beras.txt"
         private const val MODEL_PATH = "Model_Kualitas_Beras_MobileNet.tflite"
     }
-
 }
 
 

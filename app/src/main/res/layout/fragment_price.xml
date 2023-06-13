@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/deskripsi_fragment"
+    android:id="@+id/price_fragment"
     android:background="@android:color/white"
     tools:context=".ui.price.PriceFragment">
 
@@ -18,14 +18,15 @@
             android:adjustViewBounds="true"
             android:background="@color/green1"
             android:alpha="0.5"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:contentDescription="@string/background" />
     </FrameLayout>
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Daftar Harga Beras"
+        android:text="@string/title_hargaa"
         android:layout_marginTop="20dp"
         android:textAppearance="@style/CustomtextStyle3"
         android:gravity="center" />
@@ -33,7 +34,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Harga beras di setiap provinsi Indonesia"
+        android:text="@string/desc_price"
         android:layout_marginTop="10dp"
         android:layout_below="@id/title"
         android:textAppearance="@style/CustomtextStyle1"
@@ -55,26 +56,6 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Harga pada tanggal : "
-                    android:textAppearance="@style/CustomtextStyle1"/>
-
-                <TextView
-                    android:id="@+id/tvCreated"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="26 Mei 2023"
-                    android:textAppearance="@style/CustomtextStyle1"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -84,14 +65,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Provinsi"
+                    android:text="@string/provinsi"
                     android:textAppearance="@style/CustomtextStyle3" />
 
                 <TextView
                     android:id="@+id/tvHarga"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Harga/Kg"
+                    android:text="@string/harga"
                     android:textAppearance="@style/CustomtextStyle3" />
 
             </LinearLayout>

@@ -11,7 +11,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:maxLines="2"
-        android:text="DKI Jakarta"
+        android:text="@string/dki_jakarta"
         android:textAppearance="@style/CustomtextStyle1"
         android:textSize="14sp">
     </TextView>
@@ -21,7 +21,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:text="Rp15.000"
+        android:text="@string/rp15_000"
         android:textSize="14sp"
         android:textAppearance="@style/CustomtextStyle1">
     </TextView>

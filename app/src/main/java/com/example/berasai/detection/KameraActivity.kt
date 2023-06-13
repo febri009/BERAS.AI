@@ -1,37 +1,39 @@
-package com.example.berasai
+package com.example.berasai.detection
 
 
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
-import android.os.AsyncTask
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
-import com.priyankvasa.android.cameraviewex.CameraView
+import com.example.berasai.databinding.ActivityKameraBinding
+import kotlinx.coroutines.*
+import java.util.concurrent.LinkedBlockingQueue
+import java.util.concurrent.ThreadPoolExecutor
+import java.util.concurrent.TimeUnit
 
 class KameraActivity : AppCompatActivity() {
 
-    private lateinit var classifier: KlasifikasiDariKamera
+    private lateinit var classifier: ClassificationFromCamera
+    private lateinit var binding: ActivityKameraBinding
 
-    private lateinit var result: TextView
-    private lateinit var camera: CameraView
-    private lateinit var capture: CardView
-
+    private val executor = ThreadPoolExecutor(
+        2, // Jumlah thread dalam pool
+        2, // Jumlah maksimal thread dalam pool
+        0L, // Waktu tunggu sebelum membuang thread yang tidak digunakan
+        TimeUnit.MILLISECONDS, // Satuan waktu tunggu
+        LinkedBlockingQueue() // Antrian tugas yang akan dijalankan
+    )
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_kamera)
+        binding = ActivityKameraBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        result = findViewById(R.id.tvHasil1)
-        camera = findViewById(R.id.camera)
-        capture = findViewById(R.id.capture_photo)
-
-        classifier = KlasifikasiDariKamera(assets)
+        classifier = ClassificationFromCamera(assets)
 
         if (hasCameraPermission()) {
             setupCamera()
@@ -44,26 +46,25 @@ class KameraActivity : AppCompatActivity() {
         ActivityCompat.requestPermissions(
             this,
             arrayOf(Manifest.permission.CAMERA),
-            requestCameraCode
+            REQUEST_CAMERA_CODE
         )
     }
 
     @SuppressLint("MissingPermission", "SetTextI18n")
     private fun setupCamera() {
-        camera.addPictureTakenListener {
-            AsyncTask.execute {
-                val recognitions = classifier.recognize(it.data)
-                val txt = recognitions.joinToString(separator = "\n\n")
+        binding.camera.addPictureTakenListener { imageData ->
+            executor.execute {
+                val recognitions = classifier.recognize(imageData.data)
+                val txt = recognitions.joinToString(separator = "\n\n\n\n")
+
                 runOnUiThread {
-                    result.text = txt
+                    binding.tvHasil1.text = txt
                 }
             }
         }
-
-        capture.setOnClickListener {
-            camera.capture()
+        binding.capturePhoto.setOnClickListener {
+            binding.camera.capture()
         }
-
     }
 
     override fun onRequestPermissionsResult(
@@ -73,34 +74,39 @@ class KameraActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (requestCameraCode == requestCode) {
+        if (requestCode == REQUEST_CAMERA_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 setupCamera()
             } else {
-                Toast.makeText(this, "App needs camera in order to work.", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                        this,
+                        "Aplikasi perlu izin penggunaan kamera",
+                        Toast.LENGTH_LONG
+                ).show()
                 requestCameraPermissions()
             }
         }
     }
 
+
     @SuppressLint("MissingPermission")
     override fun onResume() {
         super.onResume()
         if (hasCameraPermission()) {
-            camera.start()
+            binding.camera.start()
         }
     }
 
     override fun onPause() {
         if (hasCameraPermission()) {
-            camera.stop()
+            binding.camera.stop()
         }
         super.onPause()
     }
 
     override fun onDestroy() {
         if (hasCameraPermission()) {
-            camera.destroy()
+            binding.camera.destroy()
         }
         super.onDestroy()
     }
@@ -112,9 +118,10 @@ class KameraActivity : AppCompatActivity() {
         ) == PackageManager.PERMISSION_GRANTED
 
     companion object {
-        private const val requestCameraCode = 1
+        private const val REQUEST_CAMERA_CODE = 1
     }
 }
+
 
 
 

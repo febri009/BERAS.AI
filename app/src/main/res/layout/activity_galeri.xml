@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey1"
-    tools:context=".GaleriActivity">
+    tools:context=".detection.GaleriActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,18 +18,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
-            android:text="Pilih Gambar"
+            android:text="@string/pilih_gambar"
             android:textAppearance="@style/CustomtextStyle1"
             android:background="@drawable/background_round_yellow" />
 
-
         <ImageView
             android:id="@+id/mPhotoImageView"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="330dp"
+            android:layout_height="400dp"
             android:src="@drawable/image2"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="30dp"
+            android:contentDescription="@string/gambar" />
 
     </LinearLayout>
 
@@ -43,13 +43,14 @@
             android:id="@+id/mDetectButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="210dp"
             android:layout_gravity="center"
             android:clickable="true"
             app:cardBackgroundColor="@color/green2"
             app:cardCornerRadius="25dp"
             app:cardElevation="5dp"
-            app:cardUseCompatPadding="true">
+            app:cardUseCompatPadding="true"
+            android:focusable="true">
 
             <ImageView
                 android:layout_width="60dp"
@@ -58,12 +59,13 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/ic_search"
-                app:tint="@android:color/white" />
+                app:tint="@android:color/white"
+                android:contentDescription="@string/icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Deteksi"
+                android:text="@string/deteksi"
                 android:layout_marginBottom="5dp"
                 android:textAppearance="@style/CustomtextStyle1"
                 android:textColor="@color/white"
@@ -75,7 +77,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="500dp"
+            android:layout_marginTop="580dp"
             android:background="@drawable/bg_rounded_rect"
             android:scrollbars="none">
 
@@ -89,9 +91,9 @@
                     android:id="@+id/tvHasilPrediksi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="15dp"
                     android:gravity="center"
-                    android:text="Hasil Prediksi"
+                    android:text="@string/kualitas"
                     android:layout_gravity="center"
                     android:textColor="@color/yellow2"
                     android:textAppearance="@style/CustomtextStyle3"/>
@@ -101,7 +103,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     app:cardBackgroundColor="@color/green3"
-                    android:layout_marginTop="15dp"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="0dp"
                     app:cardUseCompatPadding="true">
@@ -112,7 +113,7 @@
                         android:layout_height="wrap_content"
                         android:drawablePadding="10dp"
                         android:padding="8dp"
-                        android:text="Hasil"
+                        android:text="@string/hasil"
                         android:layout_gravity="center"
                         android:textAppearance="@style/CustomtextStyle1"/>
 
@@ -120,5 +121,4 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </FrameLayout>
-
 </RelativeLayout>

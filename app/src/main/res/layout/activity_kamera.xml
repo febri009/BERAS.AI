@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context=".KameraActivity">
+    tools:context=".detection.KameraActivity">
 
     <com.priyankvasa.android.cameraviewex.CameraView
         android:id="@+id/camera"
         android:layout_width="480dp"
-        android:layout_height="640dp"
+        android:layout_height="480dp"
         android:layout_marginBottom="0dp"
         android:adjustViewBounds="true"
         android:keepScreenOn="true"
@@ -43,7 +43,8 @@
             app:cardBackgroundColor="@color/green2"
             app:cardCornerRadius="25dp"
             app:cardElevation="5dp"
-            app:cardUseCompatPadding="true">
+            app:cardUseCompatPadding="true"
+            android:focusable="true">
 
             <ImageView
                 android:layout_width="60dp"
@@ -52,18 +53,17 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/ic_search"
-                app:tint="@android:color/white" />
+                app:tint="@android:color/white"
+                android:contentDescription="@string/icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Deteksi"
+                android:text="@string/deteksi"
                 android:layout_marginBottom="5dp"
                 android:textAppearance="@style/CustomtextStyle1"
                 android:textColor="@color/white"
                 android:layout_gravity="center|bottom"/>
-
-
         </androidx.cardview.widget.CardView>
 
         <androidx.core.widget.NestedScrollView
@@ -85,25 +85,55 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:text="Hasil Prediksi"
-                    android:layout_gravity="center"
+                    android:text="@string/kualitas"
                     android:textColor="@color/yellow2"
                     android:textAppearance="@style/CustomtextStyle3"/>
 
-                <TextView
-                    android:id="@+id/tvHasil1"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:text="Hasil"
-                    android:padding="8dp"
-                    android:gravity="center"
-                    android:background="@drawable/background_text"
-                    android:layout_gravity="center"
-                    android:textAppearance="@style/CustomtextStyle1"/>
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/ivHasil1"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/background_text"
+                        android:contentDescription="@string/result_bar">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/tvHasil1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="25dp"
+                        android:text="@string/blank_result"
+                        android:gravity="center"
+                        android:textAppearance="@style/CustomtextStyle1" />
+
+                    <ImageView
+                        android:id="@+id/ivHasil2"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/background_text"
+                        android:layout_below="@+id/ivHasil1"
+                        android:alpha="0.5"
+                        android:contentDescription="@string/result_bar" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/background_text"
+                        android:layout_below="@+id/ivHasil2"
+                        android:alpha="0.3"
+                        android:contentDescription="@string/result_bar" />
+
+                </RelativeLayout>
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </FrameLayout>
-
 </RelativeLayout>

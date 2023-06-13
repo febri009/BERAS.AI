@@ -1,8 +1,9 @@
-package com.example.berasai
+package com.example.berasai.ui.info
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
+import com.example.berasai.R
 
 class BantuanActivity : AppCompatActivity() {
 
@@ -14,11 +15,9 @@ class BantuanActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        supportActionBar?.title = "Bantuan"
-
-        // Menambahkan aksi kembali (back action) saat tombol kembali pada toolbar ditekan
+        supportActionBar?.title = " "
         toolbar.setNavigationOnClickListener {
-            onBackPressed()
+            finish()
         }
     }
 }

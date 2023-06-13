@@ -22,7 +22,7 @@ class HomeViewModel : ViewModel() {
         getListTengkulaks()
     }
 
-    fun getListTengkulaks(){
+    private fun getListTengkulaks(){
         _loadHome.value = true
         val client = ApiConfig.getApiService().getTengkulaks()
         client.enqueue(object : Callback<TengkulaksResponse> {

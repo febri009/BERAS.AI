@@ -1,4 +1,4 @@
-package com.example.berasai
+package com.example.berasai.detection
 
 import android.content.res.AssetManager
 import android.graphics.Bitmap
@@ -9,10 +9,10 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
+import java.text.DecimalFormat
 import java.util.*
-import kotlin.Comparator
 
-class KlasifikasiDariGaleri(assetManager: AssetManager, modelPath: String, labelPath: String, private val inputSize: Int) {
+class ClassificationFromGallery(assetManager: AssetManager, modelPath: String, labelPath: String, private val inputSize: Int) {
     private var interpreter: Interpreter
     private var labelList: List<String>
     private val pixelSize: Int = 3
@@ -25,10 +25,11 @@ class KlasifikasiDariGaleri(assetManager: AssetManager, modelPath: String, label
         var id: String = "",
         var title: String = "",
         var confidence: Float = 0F,
-        val percent: Float = confidence * 100
+        var percent: Float = confidence * 100
     ) {
         override fun toString(): String {
-            return "Title = $title, Hasil Prediksi = $percent)"
+            val roundedPercent = String.format("%.2f", percent)
+            return "Title = $title, Hasil Prediksi = $roundedPercent"
         }
     }
 
@@ -53,7 +54,7 @@ class KlasifikasiDariGaleri(assetManager: AssetManager, modelPath: String, label
     fun recognizeImage(bitmap: Bitmap): List<Recognition> {
         val scaledBitmap = Bitmap.createScaledBitmap(bitmap, inputSize, inputSize, false)
         val byteBuffer = convertBitmapToByteBuffer(scaledBitmap)
-        val result = Array(1) { FloatArray(labelList.size) }
+        val result = Array(BATCH_SIZE) { FloatArray(labelList.size) }
         interpreter.run(byteBuffer, result)
         return getSortedResult(result)
     }
@@ -102,11 +103,21 @@ class KlasifikasiDariGaleri(assetManager: AssetManager, modelPath: String, label
 
         val recognitions = ArrayList<Recognition>()
         val recognitionsSize = pq.size.coerceAtMost(maxResults)
+        val decimalFormat = DecimalFormat("0.00")
         for (i in 0 until recognitionsSize) {
-            pq.poll()?.let { recognitions.add(it) }
+            pq.poll()?.let { recognition ->
+                val roundedConfidence = decimalFormat.format(recognition.percent).replace(',', '.')
+                recognition.percent = roundedConfidence.toFloat()
+                recognitions.add(recognition)
+            }
         }
         return recognitions
     }
+
+    companion object {
+        private const val BATCH_SIZE = 1
+    }
 }
+
 
 

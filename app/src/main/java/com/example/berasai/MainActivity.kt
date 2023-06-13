@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.berasai.databinding.ActivityMainBinding
-import com.example.berasai.ui.home.HomeFragment
 
 
 class MainActivity : AppCompatActivity() {

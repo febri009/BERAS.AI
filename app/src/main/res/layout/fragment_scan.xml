@@ -15,7 +15,7 @@
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Opsi Deteksi"
+        android:text="@string/opsi_title"
         android:textColor="@color/yellow2"
         android:textAppearance="@style/CustomtextStyle2"/>
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Deteksi beras melalui gambar yang diambil dari kamera atau galeri"
+        android:text="@string/desc_opsi"
         android:textColor="@color/black"
         android:textAppearance="@style/CustomtextStyle1"/>
 
@@ -39,7 +39,8 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="25dp"
         app:cardElevation="5dp"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        android:focusable="true">
 
     <ImageView
         android:layout_width="90dp"
@@ -47,12 +48,13 @@
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:src="@drawable/ic_camera"
-        app:tint="@color/green3" />
+        app:tint="@color/green3"
+        android:contentDescription="@string/icon" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deteksi Melalui Kamera"
+        android:text="@string/from_camera"
         android:textAppearance="@style/CustomtextStyle3"
         android:textColor="@color/green3"
         android:layout_marginTop="60dp"
@@ -69,7 +71,8 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="25dp"
         app:cardElevation="5dp"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        android:focusable="true">
 
         <ImageView
             android:layout_width="90dp"
@@ -77,12 +80,13 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_galeri"
-            app:tint="@color/green3" />
+            app:tint="@color/green3"
+            android:contentDescription="@string/icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Deteksi Melalui Gambar"
+            android:text="@string/from_pic"
             android:textAppearance="@style/CustomtextStyle3"
             android:textColor="@color/green3"
             android:layout_marginTop="60dp"

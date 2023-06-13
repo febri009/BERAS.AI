@@ -18,14 +18,15 @@
             android:adjustViewBounds="true"
             android:background="@color/green1"
             android:alpha="0.5"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:contentDescription="@string/background" />
     </FrameLayout>
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Deskripsi"
+            android:text="@string/deskripsi"
             android:layout_marginTop="20dp"
             android:textAppearance="@style/CustomtextStyle3"
             android:gravity="center" />
@@ -33,7 +34,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Panduan buat kamu yang bingung dengan jenis-jenis kualitas beras"
+            android:text="@string/panduan"
             android:layout_marginTop="10dp"
             android:layout_below="@id/title"
             android:textAppearance="@style/CustomtextStyle1"
@@ -57,7 +58,7 @@
                 android:id="@+id/tvPremium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kualitas Premium"
+                android:text="@string/premium"
                 android:textAppearance="@style/CustomtextStyle3"/>
 
 
@@ -66,21 +67,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Butir-butirnya besar, seragam, dan memiliki warna putih bersih yang mengkilap."
+                android:text="@string/deskripsi_premium"
                 android:textAppearance="@style/CustomtextStyle1"
-                android:justificationMode="inter_word"/>
+                android:justificationMode="inter_word"
+                tools:targetApi="o" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/premium" />
+                android:src="@drawable/premium"
+                android:contentDescription="@string/premium" />
 
             <TextView
                 android:id="@+id/tvMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="Kualitas Medium"
+                android:text="@string/medium"
                 android:textAppearance="@style/CustomtextStyle3"/>
 
 
@@ -89,21 +92,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Warna butirnya mungkin sedikit kurang putih bersih dibandingkan dengan beras premium, tetapi tetap memiliki penampilan yang baik."
+                android:text="@string/deskripsi_medium"
                 android:textAppearance="@style/CustomtextStyle1"
-                android:justificationMode="inter_word"/>
+                android:justificationMode="inter_word"
+                tools:targetApi="o" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/medium" />
+                android:src="@drawable/medium"
+                android:contentDescription="@string/medium" />
 
             <TextView
                 android:id="@+id/tvBad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="Kualitas Tidak Layak"
+                android:text="@string/tidak_layak"
                 android:textAppearance="@style/CustomtextStyle3"/>
 
 
@@ -112,15 +117,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Butir-butir yang pecah atau hancur, warna yang kusam atau tidak seragam, dan adanya kotoran atau benda asing lainnya di dalamnya."
+                android:text="@string/deskripsi_tidak_layak"
                 android:textAppearance="@style/CustomtextStyle1"
-                android:justificationMode="inter_word"/>
+                android:justificationMode="inter_word"
+                tools:targetApi="o" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="50dp"
-                android:src="@drawable/bad" />
+                android:src="@drawable/bad"
+                android:contentDescription="@string/tidak_layak" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

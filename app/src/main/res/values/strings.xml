@@ -13,18 +13,52 @@
     <string name="Halo">Halo, User!</string>
     <string name="title_activity_bantuan">BantuanActivity</string>
     <string name="content_work">Dalam aplikasi ini, citra/gambar obyek beras diambil menggunakan kamera <i>smartphone</i>. Setelah itu, fitur-fitur dari piksel obyek tersebut diekstraksi dan diubah menjadi <i>array</i> dengan format gambar berwarna (RGB) berukuran 224 x 224 piksel. Proses selanjutnya melibatkan pelatihan dan pengolahan menggunakan model sebelumnya yang telah terlatih, sehingga dapat memprediksi hasil keluaran yang mewakili kualitas beras yang terdeteksi.</string>
-    <string name="content_step">1. Klik menu "Deteksi" pada Aplikasi Klasifikasi Kualitas Beras setelah membukanya.\n\n2. Setelah menu tersebut terbuka, arahkan kamera ke obyek beras yang ingin dideteksi (jarak kamera dengan obyek sekitar 10 cm), lalu klik/tap tombol "Deteksi".\n\n3. Beberapa saat setelah menekan tombol "Deteksi", hasil prediksi akan muncul di bagian bawah layar dalam persentase (% diurutkan dari yang tertinggi). Persentase tertinggi menunjukkan hasil prediksi yang paling mendekati/mirip.\n\n4. Jika ingin mengklasifikasi secara manual dengan mengimpor gambar yang sudah tersimpan di galeri foto, buka menu "Deteksi Melalui Galeri".\n\n5. Klik tombol "Pilih Gambar" dan cari gambar obyek beras yang ingin dideteksi.\n\n6. Selanjutnya, tekan tombol Deteksi, dan hasil prediksinya akan muncul beberapa saat setelah menekan tombol tersebut di bagian bawah layar.\n\n7. Untuk mengetahui penjelasan singkat tiap kualitas beras, pilih menu "Panduan". Jika ingin mengetahui cara penggunaan aplikasi ini, pilih menu "Bantuan". Menu "Tentang Aplikasi" menyediakan informasi tentang pembuatan aplikasi ini.</string>
-    <string name="content_about">Dibuatlah aplikasi ini dengan tujuan melakukan klasifikasi kualitas beras (Premium, Medium, dan Tidak Layak). Metode yang digunakan adalah Convolutional Neural Network (CNN) dengan model arsitektur MobileNet. Arsitektur tersebut menjalani pelatihan menggunakan Google Colaboratory. Setelah pelatihan selesai, model disimpan dan dikonversi menggunakan TensorFlow Lite. File model yang telah dikonversi dapat diunduh dan diimpor ke perangkat Android untuk diimplementasikan dalam aplikasi. Dengan menggunakan perangkat Android, pengguna dapat melakukan klasifikasi kualitas beras secara langsung.\nSelain itu, dalam aplikasi ini juga terdapat pengaturan otomatis untuk penggunaan flash kamera. Hal ini bertujuan agar perubahan cahaya yang terjadi di luar ruangan dengan banyak cahaya atau di dalam ruangan yang minim cahaya tidak mempengaruhi hasil klasifikasi. Flash kamera pada smartphone akan menyala atau mati secara otomatis berdasarkan intensitas cahaya yang ada. Fitur ini akan memudahkan pengguna dalam mendeteksi kualitas beras.</string>
+    <string name="content_step">1. Klik menu "Deteksi" pada Aplikasi Klasifikasi Kualitas Beras setelah membukanya.\n\n2. Setelah menu tersebut terbuka, arahkan kamera ke obyek beras yang ingin dideteksi, lalu klik/tap tombol "Deteksi".\n\n3. Beberapa saat setelah menekan tombol "Deteksi", hasil prediksi akan muncul di bagian bawah layar dalam persentase (% diurutkan dari yang tertinggi). Persentase tertinggi menunjukkan hasil prediksi yang paling mendekati/mirip.\n\n4. Jika ingin mendeteksi melalui gambar, anda dapat mengimpor gambar yang sudah tersimpan di galeri foto, buka opsi "Deteksi Melalui Galeri".\n\n5. Klik tombol "Pilih Gambar" dan cari gambar obyek beras yang ingin dideteksi.\n\n6. Selanjutnya, tekan tombol Deteksi, dan hasil prediksinya akan muncul beberapa saat setelah menekan tombol tersebut di bagian bawah layar.\n\n7. Untuk mengetahui penjelasan singkat tiap kualitas beras, pilih menu "Panduan". Jika ingin mengetahui cara penggunaan aplikasi ini, pilih menu "Bantuan". Menu "Tentang Aplikasi" menyediakan informasi tentang pembuatan aplikasi ini.</string>
+    <string name="content_about">Dibuatnya aplikasi ini dengan tujuan mendeteksi kualitas beras yang dibagi berdasarkan 3 parameter, yaitu Premium, Medium, dan Tidak Layak. Kami menggunakan metode Convolutional Neural Network (CNN) dengan model arsitektur MobileNet. Arsitektur tersebut menjalani training menggunakan Google Colaboratory. Setelah training selesai, model disimpan dan dikonversi menggunakan TensorFlow Lite. File model yang telah dikonversi kemudian diimpor ke perangkat Android untuk diimplementasikan dalam aplikasi. Dengan menggunakan perangkat Android, pengguna dapat melakukan deteksi kualitas beras secara langsung.\nSelain itu, dalam aplikasi ini juga terdapat pengaturan otomatis untuk penggunaan flash kamera. Hal ini bertujuan agar perubahan cahaya yang terjadi di luar ruangan dengan banyak cahaya atau di dalam ruangan yang minim cahaya tidak mempengaruhi hasil deteksi. Flash kamera pada smartphone akan menyala atau mati secara otomatis berdasarkan intensitas cahaya yang ada.\nAplikasi ini juga menyediakan fitur Tengkulak Beras. User akan mendapatkan akses ke tengkulak-tengkulak terdekat untuk mendapatkan beras dengan kualitas baik. Untuk mendapatkan informasi terbaru seputar harga beras, user dapat melihatnya melalui menu Harga</string>
     <string name="developer">1. Febriyanti Paramudita (Mobile Developer)\n2. Rizki Abdilah S. (Mobile Developer)\n3. Dian Rizqi S. (ML Engineer)\n4. Fayza Aurellia S.P. (ML Engineer)\n5. Andrea Rossi (Cloud Engineer)\n6. Johanes Krishna (Cloud Engineer)</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tentang">Tentang</string>
+    <string name="logo">logo</string>
+    <string name="apa_itu_beras_ai">Apa itu BERAS.AI?</string>
+    <string name="pengembang">Dikembangkan dan Dikelola oleh :</string>
+    <string name="versi">Version 1.0</string>
+    <string name="gambar">gambar</string>
+    <string name="cara_kerja_aplikasi">Cara Kerja Aplikasi</string>
+    <string name="cara_menggunakan">Cara Menggunakan</string>
+    <string name="pilih_gambar">Pilih Gambar</string>
+    <string name="icon">icon</string>
+    <string name="deteksi">Deteksi</string>
+    <string name="kualitas">Kualitas Berasmu :</string>
+    <string name="hasil">Hasil</string>
+    <string name="result_bar">result bar</string>
+    <string name="blank_result" />
+    <string name="background">background</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="panduan">Panduan buat kamu yang bingung dengan jenis-jenis kualitas beras</string>
+    <string name="premium">Kualitas Premium</string>
+    <string name="deskripsi_premium">Butir-butirnya besar, seragam, dan memiliki warna putih bersih yang mengkilap.</string>
+    <string name="medium">Kualitas Medium</string>
+    <string name="deskripsi_medium">Warna butirnya mungkin sedikit kurang putih bersih dibandingkan dengan beras premium, tetapi tetap memiliki penampilan yang baik.</string>
+    <string name="tidak_layak">Kualitas Tidak Layak</string>
+    <string name="deskripsi_tidak_layak">Butir-butir yang pecah atau hancur, warna yang kusam atau tidak seragam, dan adanya kotoran atau benda asing lainnya di dalamnya.</string>
+    <string name="welcome">Selamat Datang,</string>
+    <string name="user">User</string>
+    <string name="tengkulak_beras">Tengkulak Beras</string>
+    <string name="tengkulak_desc">Temukan tengkulak beras di daerahmu. Jaminan kualitas beras terbaik!</string>
+    <string name="title_hargaa">Daftar Harga Beras</string>
+    <string name="desc_price">Harga beras di setiap provinsi Indonesia</string>
+    <string name="provinsi">Provinsi</string>
+    <string name="harga">Harga/Kg</string>
+    <string name="option_bantuan">Bantuan</string>
+    <string name="arrow">arrow logo</string>
+    <string name="option_about">Tentang Aplikasi</string>
+    <string name="opsi_title">Opsi Deteksi</string>
+    <string name="desc_opsi">Deteksi beras melalui gambar yang diambil dari kamera atau galeri</string>
+    <string name="from_camera">Deteksi Melalui Kamera</string>
+    <string name="from_pic">Deteksi Melalui Gambar</string>
+    <string name="dki_jakarta">DKI Jakarta</string>
+    <string name="rp15_000">Rp15.000</string>
+    <string name="namaa_tengkulak">Beras Sumber Rejeki</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel fringilla libero. Curabitur posuere lectus vitae lectus auctor, in auctor ante congue.</string>
+    <string name="button_hubungi">Hubungi Tengkulak</string>
 
 </resources>

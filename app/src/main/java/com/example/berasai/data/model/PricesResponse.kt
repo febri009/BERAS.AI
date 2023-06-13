@@ -26,7 +26,7 @@ data class UpdatedAtPrices(
 data class DataPrices(
 
 	@field:SerializedName("createdAt")
-	val createdAt: CreatedAtPrices,
+	val updateAt: CreatedAtPrices,
 
 	@field:SerializedName("province")
 	val province: String,

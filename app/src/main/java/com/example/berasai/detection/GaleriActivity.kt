@@ -1,4 +1,4 @@
-package com.example.berasai
+package com.example.berasai.detection
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -7,20 +7,14 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.os.Bundle
-import android.os.SystemClock
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
+import com.example.berasai.databinding.ActivityGaleriBinding
 import java.io.IOException
-import java.util.*
 
 class GaleriActivity : AppCompatActivity() {
-    private lateinit var mClassifier: KlasifikasiDariGaleri
+    private lateinit var mClassifier: ClassificationFromGallery
     private lateinit var mBitmap: Bitmap
 
     private val mGalleryRequestCode = 2
@@ -29,32 +23,25 @@ class GaleriActivity : AppCompatActivity() {
     private val mModelPath = "Model_Kualitas_Beras_MobileNet.tflite"
     private val mLabelPath = "Klasifikasi_Kualitas_Beras.txt"
     private lateinit var galleryLauncher: ActivityResultLauncher<String>
-
-    private var lastProcessingTimeMs: Long = 0
+    private lateinit var binding: ActivityGaleriBinding
 
     @SuppressLint("SetTextI18n", "Recycle")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_galeri)
-
-        val mPhotoImageView = findViewById<ImageView>(R.id.mPhotoImageView)
-        val mGalleryButton = findViewById<Button>(R.id.mGalleryButton)
-        val mDetectButton = findViewById<CardView>(R.id.mDetectButton)
-        val mResultTextView = findViewById<TextView>(R.id.mResultTextView)
+        binding = ActivityGaleriBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
 
-        mClassifier = KlasifikasiDariGaleri(assets, mModelPath, mLabelPath, mInputSize)
+        mClassifier = ClassificationFromGallery(assets, mModelPath, mLabelPath, mInputSize)
 
-        mGalleryButton.setOnClickListener {
+        binding.mGalleryButton.setOnClickListener {
             galleryLauncher.launch("image/*")
         }
 
-        mDetectButton.setOnClickListener {
-            val startTime = SystemClock.uptimeMillis()
+        binding.mDetectButton.setOnClickListener {
             val results = mClassifier.recognizeImage(mBitmap).firstOrNull()
-            mResultTextView.text = "${results?.title}\nProbabilitas: ${results?.percent}%"
-            lastProcessingTimeMs = SystemClock.uptimeMillis() - startTime
+            binding.mResultTextView.text = "${results?.title}, akurasi: ${results?.percent}%"
         }
 
         galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
@@ -64,23 +51,23 @@ class GaleriActivity : AppCompatActivity() {
                     descriptor?.let {
                         mBitmap = BitmapFactory.decodeFileDescriptor(descriptor)
                         mBitmap = scaleImage(mBitmap)
-                        mPhotoImageView.setImageBitmap(mBitmap)
+                        binding.mPhotoImageView.setImageBitmap(mBitmap)
                     }
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
             }
         }
-
     }
 
     @SuppressLint("Recycle")
     @Suppress("DEPRECATION")
-    @Deprecated(message = "This method is deprecated. Use registerForActivityResult instead.", level = DeprecationLevel.ERROR)
+    @Deprecated(
+        message = "This method is deprecated. Use registerForActivityResult instead.",
+        level = DeprecationLevel.ERROR
+    )
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
-        val mPhotoImageView = findViewById<ImageView>(R.id.mPhotoImageView)
 
         if (requestCode == mGalleryRequestCode && resultCode == RESULT_OK) {
             data?.data?.let { uri ->
@@ -89,14 +76,12 @@ class GaleriActivity : AppCompatActivity() {
                     descriptor?.let {
                         mBitmap = BitmapFactory.decodeFileDescriptor(descriptor)
                         mBitmap = scaleImage(mBitmap)
-                        mPhotoImageView.setImageBitmap(mBitmap)
+                        binding.mPhotoImageView.setImageBitmap(mBitmap)
                     }
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
             }
-        } else {
-            Toast.makeText(this, "Unrecognized request code", Toast.LENGTH_LONG).show()
         }
     }
 
