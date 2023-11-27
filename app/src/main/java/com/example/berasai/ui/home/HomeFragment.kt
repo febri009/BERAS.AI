@@ -22,8 +22,7 @@ class HomeFragment : Fragment() {
     private lateinit var searchViewListener: SearchView.OnQueryTextListener
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
+    override fun onCreateView(inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {

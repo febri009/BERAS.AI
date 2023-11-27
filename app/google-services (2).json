@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "95990578254",
+    "project_id": "berasai-45a7b",
+    "storage_bucket": "berasai-45a7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95990578254:android:d840fba14bb5006055d71f",
+        "android_client_info": {
+          "package_name": "com.example.berasai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95990578254-72joa2cpcpkb99d8op3e5f2hn1err1vi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxr_9h1rWIODYid5WCEab2EAosL7Ywcyc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95990578254-72joa2cpcpkb99d8op3e5f2hn1err1vi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
